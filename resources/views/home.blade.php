@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body>
 
 
     <!-- Navbar -->

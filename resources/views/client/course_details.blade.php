@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <!-- breadcrumb start-->
     <section class="breadcrumb breadcrumb_bg">
         <div class="container">
@@ -26,7 +25,7 @@
             <div class="row">
                 <div class="col-lg-8 course_details_left">
                     <div class="main_image">
-                        <img class="img-fluid" src="img/single_cource.png" alt="">
+                        <img class="img-fluid" src="{{ asset('assets/img/single_cource.png') }}" alt="">
                     </div>
                     <div class="content_wrapper">
                         <h4 class="title_top">Objectives</h4>
@@ -119,7 +118,6 @@
                     </div>
                 </div>
 
-
                 <div class="col-lg-4 right-contents">
                     <div class="sidebar_top">
                         <ul>
@@ -147,7 +145,6 @@
                                     <span>2.00 pm to 4.00 pm</span>
                                 </a>
                             </li>
-
                         </ul>
                         <a href="#" class="btn_1 d-block">Enroll the course</a>
                     </div>
@@ -160,37 +157,36 @@
                                 <div class="d-flex flex-row reviews justify-content-between">
                                     <span>Quality</span>
                                     <div class="rating">
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/star.svg" alt=""></a>
-                                        </div>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/star.svg') }}" alt=""></a>
+                                    </div>
                                     <span>Outstanding</span>
                                 </div>
                                 <div class="d-flex flex-row reviews justify-content-between">
                                     <span>Puncuality</span>
                                     <div class="rating">
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/star.svg" alt=""></a>
-                                        </div>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/star.svg') }}" alt=""></a>
+                                    </div>
                                     <span>Outstanding</span>
                                 </div>
                                 <div class="d-flex flex-row reviews justify-content-between">
                                     <span>Quality</span>
                                     <div class="rating">
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                            <a href="#"><img src="img/icon/star.svg" alt=""></a>
-                                        </div>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets/img/icon/star.svg') }}" alt=""></a>
+                                    </div>
                                     <span>Outstanding</span>
                                 </div>
-
                             </div>
                         </div>
                         <div class="feedeback">
@@ -205,17 +201,16 @@
                                 <div class="single-comment single-reviews justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="img/cource/cource_1.png" alt="">
+                                            <img src="{{ asset('assets/img/cource/cource_1.png') }}" alt="">
                                         </div>
                                         <div class="desc">
-                                            <h5><a href="#">Emilly Blunt</a>
-                                            </h5>
+                                            <h5><a href="#">Emilly Blunt</a></h5>
                                             <div class="rating">
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/star.svg" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/star.svg') }}" alt=""></a>
                                             </div>
                                             <p class="comment">
                                                 Blessed made of meat doesn't lights doesn't was dominion and sea earth
@@ -229,17 +224,16 @@
                                 <div class="single-comment single-reviews justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="img/cource/cource_2.png" alt="">
+                                            <img src="{{ asset('assets/img/cource/cource_2.png') }}" alt="">
                                         </div>
                                         <div class="desc">
-                                            <h5><a href="#">Elsie Cunningham</a>
-                                            </h5>
+                                            <h5><a href="#">Elsie Cunningham</a></h5>
                                             <div class="rating">
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/star.svg" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/star.svg') }}" alt=""></a>
                                             </div>
                                             <p class="comment">
                                                 Blessed made of meat doesn't lights doesn't was dominion and sea earth
@@ -253,17 +247,16 @@
                                 <div class="single-comment single-reviews justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
                                         <div class="thumb">
-                                            <img src="img/cource/cource_3.png" alt="">
+                                            <img src="{{ asset('assets/img/cource/cource_3.png') }}" alt="">
                                         </div>
                                         <div class="desc">
-                                            <h5><a href="#">Maria Luna</a>
-                                            </h5>
+                                            <h5><a href="#">Maria Luna</a></h5>
                                             <div class="rating">
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/color_star.svg" alt=""></a>
-                                                <a href="#"><img src="img/icon/star.svg" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/color_star.svg') }}" alt=""></a>
+                                                <a href="#"><img src="{{ asset('assets/img/icon/star.svg') }}" alt=""></a>
                                             </div>
                                             <p class="comment">
                                                 Blessed made of meat doesn't lights doesn't was dominion and sea earth
