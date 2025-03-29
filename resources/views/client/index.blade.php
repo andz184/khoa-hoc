@@ -152,9 +152,9 @@
                 <div class="single_special_cource">
                     <img src="{{ asset('assets/img/special_cource_1.png') }}" class="special_img" alt="">
                     <div class="special_cource_text">
-                        <a href="{{route('cource-detail')}}" class="btn_4">Web Development</a>
+                        <a href="{{route('course')}}" class="btn_4">Web Development</a>
                         <h4>$130.00</h4>
-                        <a href="{{route('cource-detail')}}"><h3>Web Development</h3></a>
+                        <a href="{{route('course-detail')}}"><h3>Web Development</h3></a>
                         <p>Which whose darkness saying were life unto fish wherein all fish of together called</p>
                         <div class="author_info">
                             <div class="author_img">

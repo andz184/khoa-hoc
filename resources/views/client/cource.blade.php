@@ -32,7 +32,7 @@
                 <div class="single_special_cource">
                     <img src="{{ asset('assets/img/special_cource_1.png') }}" class="special_img" alt="">
                     <div class="special_cource_text">
-                        <a href="{{ route('cource-detail') }}" class="btn_4">Web Development</a>
+                        <a href="{{ route('course-detail') }}" class="btn_4">Web Development</a>
                         <h4>$130.00</h4>
                         <a href="course-details.html">
                             <h3>Web Development</h3>
