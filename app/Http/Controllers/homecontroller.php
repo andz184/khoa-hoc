@@ -40,7 +40,7 @@ class HomeController extends Controller
 
     public function courceDetail($slug)
     {
-        $course = Course::with('categories')
+        $course = Course::with(['categories', 'lessons'])
             ->where('slug', $slug)
             ->where('is_published', true)
             ->firstOrFail();

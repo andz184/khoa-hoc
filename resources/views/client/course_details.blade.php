@@ -44,20 +44,29 @@
                             {!! $course->description !!}
                         </div>
 
+
+                        <div class="content">
+                            {!! $course->objectives !!}
+                        </div>
+
                         <h4 class="title mt-5">Danh sách bài giảng</h4>
                         <div class="content">
-                            <div class="course-outline">
-                                <div class="outline-item">
-                                    <i class="fas fa-clock"></i>
-                                    <h5>Tổng thời lượng</h5>
-                                    <p>{{ $course->duration }}</p>
-                                </div>
-                                <div class="outline-item">
-                                    <i class="fas fa-users"></i>
-                                    <h5>Số lượng học viên đã đăng ký</h5>
-                                    <p>20</p>
-                                </div>
 
+
+                            <div class="lessons-list mt-4">
+                                @foreach($course->lessons->where('is_visible', true)->sortBy('sort_order') as $index => $lesson)
+                                <div class="lesson-item">
+                                    <div class="lesson-number">{{ $index + 1 }}</div>
+                                    <div class="lesson-content">
+                                        <h5>{{ $lesson->title }}</h5>
+                                        <p>{{ $lesson->description }}</p>
+                                        <div class="lesson-objectives">
+                                            <strong>Mục tiêu bài học:</strong>
+                                            <p>{{ $lesson->objectives }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -78,7 +87,6 @@
                             @if($course->regular_price && $course->regular_price != $course->getCurrentPrice())
                                 <span class="original-price"><del>{{ number_format($course->regular_price, 0, ',', '.') }} VNĐ</del></span>
                             @endif
-
                         </div>
                     </div>
                 </div>
@@ -87,7 +95,6 @@
                         <div class="info-item">
                             <i class="fas fa-users"></i>
                             <div class="slots-price-info">
-
                                 @if($course->original_price && $course->original_price != $course->getCurrentPrice())
                                     <span class="original-price-small"><del>{{ number_format($course->original_price, 0, ',', '.') }} VNĐ</del></span>
                                 @endif
@@ -124,15 +131,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
-
-
                     <button class="enroll-btn" onclick="openEnrollModal()">Mua khóa học</button>
                 </div>
             </div>
         </div>
     </div>
-                    @endif
-
+    @endif
 
     <!-- Modal thanh toán -->
     <div class="modal fade" id="enrollmentModal" tabindex="-1" aria-labelledby="enrollmentModalLabel" aria-hidden="true">
@@ -165,7 +169,6 @@
                     <!-- Thông tin thanh toán -->
                     <div id="paymentInfo" style="display: none;">
                         <div class="text-center mb-4">
-
                             <div class="price mb-4">
                                 @if($course->original_price && $course->original_price != $course->getCurrentPrice())
                                     <span class="original-price"><del>{{ number_format($course->original_price, 0, ',', '.') }} VNĐ</del></span>
@@ -642,6 +645,74 @@
     font-size: 0.85rem;
     color: #6c757d;
     text-decoration: line-through;
+}
+
+/* Lesson List Styles */
+.lessons-list {
+    margin-top: 30px;
+}
+
+.lesson-item {
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.lesson-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.lesson-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d6efd;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    min-width: 60px;
+    padding: 20px 10px;
+}
+
+.lesson-content {
+    padding: 20px;
+    flex: 1;
+}
+
+.lesson-content h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.lesson-content p {
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.lesson-objectives {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid #0d6efd;
+}
+
+.lesson-objectives strong {
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.lesson-objectives p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
 }
 </style>
 

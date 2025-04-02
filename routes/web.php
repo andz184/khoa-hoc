@@ -76,6 +76,14 @@ Route::middleware(['auth', 'verified', AdminMiddleware::class])->group(function 
     // Media Library Routes
     Route::get('/admin123/media', [MediaController::class, 'index'])->name('admin.media.index');
     Route::post('/admin123/media/upload', [MediaController::class, 'upload'])->name('admin.media.upload');
+
+    // Course lessons routes
+    Route::resource('/admin123/courses/{course}/lessons', LessonController::class)->names('admin.courses.lessons');
+    Route::post('/admin123/courses/{course}/lessons/update-order', [LessonController::class, 'updateOrder'])->name('admin.courses.lessons.update-order');
+
+    // Thêm routes mới cho việc toggle trạng thái
+    Route::post('/admin123/courses/{course}/lessons/{lesson}/toggle-publish', [LessonController::class, 'togglePublish'])->name('admin.courses.lessons.toggle-publish');
+    Route::post('/admin123/courses/{course}/lessons/{lesson}/toggle-visibility', [LessonController::class, 'toggleVisibility'])->name('admin.courses.lessons.toggle-visibility');
 });
 
 Route::post('/upload-image', [ImageController::class, 'upload'])

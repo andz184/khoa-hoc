@@ -39,6 +39,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="#" class="nav-link" id="manage-lessons-btn">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>Quản lý bài học</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Quản lý User</p>
@@ -50,3 +56,52 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<!-- Modal chọn khóa học -->
+<div class="modal fade" id="selectCourseModal" tabindex="-1" role="dialog" aria-labelledby="selectCourseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selectCourseModalLabel">Chọn khóa học</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select class="form-control" id="course-select">
+                    <option value="">-- Chọn khóa học --</option>
+                    @foreach(App\Models\Course::all() as $course)
+                        <option value="{{ $course->id }}">{{ $course->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="go-to-lessons-btn">Xem bài học</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const manageLessonsBtn = document.getElementById('manage-lessons-btn');
+        const selectCourseModal = document.getElementById('selectCourseModal');
+        const goToLessonsBtn = document.getElementById('go-to-lessons-btn');
+        const courseSelect = document.getElementById('course-select');
+
+        manageLessonsBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            $('#selectCourseModal').modal('show');
+        });
+
+        goToLessonsBtn.addEventListener('click', function() {
+            const courseId = courseSelect.value;
+            if (courseId) {
+                window.location.href = `/admin123/courses/${courseId}/lessons`;
+            } else {
+                alert('Vui lòng chọn một khóa học');
+            }
+        });
+    });
+</script>

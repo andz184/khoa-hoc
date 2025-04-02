@@ -17,6 +17,14 @@
         <i class="fas fa-graduation-cap"></i>
         <span> Quản lý khóa học </span>
     </a>
+    <ul class="side-nav-second-level">
+        <li>
+            <a href="{{ route('admin.courses.index') }}">Danh sách khóa học</a>
+        </li>
+        <li>
+            <a href="{{ route('admin.courses.create') }}">Thêm khóa học mới</a>
+        </li>
+    </ul>
 </li>
 
 <li class="side-nav-item">
