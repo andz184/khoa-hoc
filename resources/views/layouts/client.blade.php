@@ -5,8 +5,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ config('app.name', 'Etrain') }}</title>
-    <link rel="icon" href="{{ asset('assets/img/khoahocai.png') }}">
+    <title>@yield('title', config('app.name', 'Khoá Học AI'))</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <!-- animate CSS -->

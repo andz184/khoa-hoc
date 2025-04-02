@@ -1,6 +1,8 @@
-    @extends('layouts.client')
+@extends('layouts.client')
 
-    @section('content')
+@section('title', 'Khóa Học - Khoá Học AI')
+
+@section('content')
 
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');

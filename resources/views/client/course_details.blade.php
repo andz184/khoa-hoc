@@ -1,5 +1,7 @@
 @extends('layouts.client')
 
+@section('title', $course->title)
+
 @section('content')
 <!-- Thêm meta CSRF token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -163,7 +165,7 @@
                     <!-- Thông tin thanh toán -->
                     <div id="paymentInfo" style="display: none;">
                         <div class="text-center mb-4">
-                            <h4 class="course-title mb-3">{{ $course->title }}</h4>
+
                             <div class="price mb-4">
                                 @if($course->original_price && $course->original_price != $course->getCurrentPrice())
                                     <span class="original-price"><del>{{ number_format($course->original_price, 0, ',', '.') }} VNĐ</del></span>
@@ -181,8 +183,8 @@
                                     <li class="mb-2"><strong>Ngân hàng:</strong> TPBANK</li>
                                     <li class="mb-2"><strong>Số tài khoản:</strong> 05261994118</li>
                                     <li class="mb-2"><strong>Chủ tài khoản:</strong> PHAM QUANG DAT</li>
-                                    <li class="mb-2"><strong>Số tiền:</strong> {{ $course->getCurrentPrice() }} VNĐ</li>
-                                    <li class="mb-2"><strong>Nội dung CK:</strong> <span id="transferContent"></span></li>
+                                    <li class="mb-2"><strong>Số tiền:</strong> <span class="fw-bold text-primary">{{ number_format($course->getCurrentPrice(), 0, ',', '.') }} VNĐ</span></li>
+                                    <li class="mb-2"><strong>Nội dung CK:</strong> <span id="transferContent" class="fw-bold text-primary"></span></li>
                                 </ul>
                             </div>
 
@@ -695,8 +697,8 @@ function showPaymentQR() {
         return;
     }
 
-    // Tạo nội dung chuyển khoản: tên khóa học + số điện thoại
-    const transferContent = `{{ $course->title }} + ${phone}`;
+    // Tạo nội dung chuyển khoản: mã khóa học + số điện thoại
+    const transferContent = `{{ $course->course_code }} ${phone}`;
     document.getElementById('transferContent').textContent = transferContent;
 
     // Tạo QR code với nội dung mới

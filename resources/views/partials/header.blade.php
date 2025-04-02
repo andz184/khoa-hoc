@@ -19,9 +19,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('course') }}">Danh sách khóa học</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Liên hệ</a>
-                            </li>
+
                             <li class="d-none d-lg-block">
                                 @auth
                                     @if (Auth::user()->role_id == '2')

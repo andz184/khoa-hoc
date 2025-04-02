@@ -1,5 +1,7 @@
 @extends('layouts.client')
 
+@section('title', 'Khóa học AI')
+
 @section('content')
 
 <!-- banner part start-->
