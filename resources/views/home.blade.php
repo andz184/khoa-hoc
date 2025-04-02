@@ -3,7 +3,6 @@
 
 <head>
     <!-- Required meta tags -->
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ config('app.name', 'Etrain') }}</title>
@@ -24,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 </head>
 
 <body>
@@ -69,6 +70,18 @@
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
+    <script>
+        const toggler = document.querySelector('.navbar-toggler');
+        const menu = document.querySelector('#navbarSupportedContent');
+
+        toggler.addEventListener('click', function () {
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+            } else {
+                menu.classList.add('show');
+            }
+        });
+    </script>
     <!-- Slug convert function -->
     <script type="text/javascript">
         function ChangeToSlug() {

@@ -5,7 +5,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{{ route('dashboard') }}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -131,5 +131,69 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      @auth
+      <!-- User Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-user"></i> {{ Auth::user()->name }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-user-cog mr-2"></i> Thông tin tài khoản
+          </a>
+          <div class="dropdown-divider"></div>
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="dropdown-item text-danger">
+              <i class="fas fa-sign-out-alt mr-2"></i> Đăng xuất
+            </button>
+          </form>
+        </div>
+      </li>
+      @else
+      <li class="nav-item">
+        <a href="{{ route('login') }}" class="nav-link">
+          <i class="fas fa-sign-in-alt"></i> Đăng nhập
+        </a>
+      </li>
+      @endauth
     </ul>
   </nav>
+
+<style>
+.navbar-nav .nav-item .nav-link {
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #8e44ad;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: #fff5f5;
+    color: #dc3545;
+}
+
+.dropdown-divider {
+    margin: 0.5rem 0;
+    border-top: 1px solid #eee;
+}
+
+.nav-item .nav-link i {
+    margin-right: 5px;
+}
+</style>

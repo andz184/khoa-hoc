@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 </head>
 
 <body >
@@ -91,6 +93,40 @@
             slug = slug.replace(/\@\-|\-\@|\@/gi, '');
             document.getElementById('convert_slug').value = slug;
         }
+    </script>
+
+    <!-- Custom JavaScript for mobile menu -->
+    <script>
+        $(document).ready(function() {
+            // Handle navbar toggler click
+            $('.navbar-toggler').click(function() {
+                // Add smooth animation to menu collapse
+                $('.navbar-collapse').slideToggle(300);
+
+                // Toggle aria-expanded attribute
+                var isExpanded = $(this).attr('aria-expanded') === 'true';
+                $(this).attr('aria-expanded', !isExpanded);
+
+                // Add animation class to icon
+                $(this).find('.navbar-toggler-icon').toggleClass('active');
+            });
+
+            // Close menu when clicking outside
+            $(document).click(function(event) {
+                var clickover = $(event.target);
+                var _opened = $('.navbar-collapse').hasClass('show');
+                if (_opened === true && !clickover.hasClass('navbar-toggler')) {
+                    $('.navbar-toggler').attr('aria-expanded', 'false');
+                    $('.navbar-collapse').slideUp(300);
+                }
+            });
+
+            // Close menu when clicking a nav-link
+            $('.nav-link').click(function() {
+                $('.navbar-collapse').slideUp(300);
+                $('.navbar-toggler').attr('aria-expanded', 'false');
+            });
+        });
     </script>
 </body>
 </html>

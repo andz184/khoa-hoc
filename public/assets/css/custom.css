@@ -1,0 +1,218 @@
+.btn_1 {
+    background: var(--main-color);
+    border: none;
+    color: #fff;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-weight: 500;
+    transition: 0.5s;
+    background-image: none;
+    background-color: #9b59b6;
+}
+
+.btn_1:hover {
+    background: #9b59b6;
+    color: #fff;
+}
+
+.btn_4 {
+    background: var(--main-color);
+    border: none;
+    color: #fff;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-weight: 500;
+    transition: 0.5s;
+    background-image: none;
+    background-color: #9b59b6;
+}
+/* Responsive menu fixes */
+@media (max-width: 991px) {
+    .navbar-brand img {
+        width: 200px !important;
+        height: auto !important;
+    }
+
+    .navbar-toggler {
+        padding: 10px;
+        margin-right: 15px;
+        border: 1px solid var(--main-color);
+        transition: all 0.3s ease;
+    }
+
+    .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    .navbar-toggler[aria-expanded="true"] {
+        background-color: var(--main-color);
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+        background-image: none;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
+        content: '×';
+        display: block;
+        color: white;
+        font-size: 24px;
+        line-height: 24px;
+        font-weight: bold;
+    }
+
+    .navbar-light .navbar-toggler-icon {
+        transition: all 0.3s ease;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        z-index: 1000;
+        border-top: 3px solid var(--main-color);
+    }
+
+    .navbar-nav {
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nav-link {
+        padding: 10px 15px !important;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+        background-color: rgba(155, 89, 182, 0.1);
+        border-radius: 5px;
+    }
+
+    /* Chỉ ẩn nút đăng nhập mặc định và hiển thị phiên bản mobile */
+    .d-none.d-lg-block {
+        display: none !important;
+    }
+
+    .nav-item .btn_1 {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main_menu {
+        padding: 10px 0;
+        background: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar {
+        padding: 0;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-danger,
+.btn-warning,
+.btn-info,
+.btn-light,
+.btn-dark {
+    background: var(--main-color);
+    border: none;
+    color: #fff;
+    background-image: none;
+}
+
+.btn:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-success:hover,
+.btn-danger:hover,
+.btn-warning:hover,
+.btn-info:hover,
+.btn-light:hover,
+.btn-dark:hover {
+    background: #9b59b6;
+    color: #fff;
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-success,
+.btn-outline-danger,
+.btn-outline-warning,
+.btn-outline-info,
+.btn-outline-light,
+.btn-outline-dark {
+    border-color: var(--main-color);
+    color: var(--main-color);
+    background: transparent;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover,
+.btn-outline-success:hover,
+.btn-outline-danger:hover,
+.btn-outline-warning:hover,
+.btn-outline-info:hover,
+.btn-outline-light:hover,
+.btn-outline-dark:hover {
+    background: #9b59b6;
+    border-color: #9b59b6;
+    color: #fff;
+}
+
+/* Counter section styles */
+.member_counter {
+    background: #9b59b6 !important;
+    background-image: none !important;
+    transition: 0.5s;
+}
+
+
+
+.member_counter .single_counter {
+    background: #9b59b6;
+    transition: 0.5s;
+}
+
+.member_counter .single_counter:hover {
+    background: var(--main-color);
+}
+
+.counter_icon {
+    color: #fff;
+}
+
+.counter_number {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.counter_text {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 0;
+}

@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">123</span>
     </a>
 
     <!-- Sidebar -->
@@ -42,11 +42,10 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-
-            </ul>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ route('admin.courses.create') }}" class="nav-link">
+              <i class="nav-icon fas fa-plus"></i>
               <p>
                 Đăng tải khóa học mới
                 <span class="right badge badge-danger">New</span>
@@ -54,18 +53,26 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ route('admin.courses.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-graduation-cap"></i>
               <p>
-                Danh mục bài học
-
+                Danh sách khóa học
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ route('admin.categories.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Danh mục bài học
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.users.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
               <p>
                Danh sách user
-
               </p>
             </a>
           </li>
@@ -73,12 +80,12 @@
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="nav-link" style="border: none; background: none; padding: 0; cursor: pointer;">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
                     <p>Đăng xuất</p>
                 </button>
             </form>
-        </li>
-
-
+          </li>
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

@@ -1,9 +1,7 @@
 /**************** extend css start ****************/
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:800|Poppins:300,400,500,600,700,800|Roboto:300,400,500");
 /* line 2, E:/172 Etrain Education/172_Etrain_Education_html/sass/_extends.scss */
-.btn_1, .btn_2:hover, .main_menu .navbar-toggler:after, .banner_part .banner_text .btn_1, .feature_part .single_feature:hover span {
-  background-image: linear-gradient(to left, #ee390f 0%, #f9b700 51%, #ee390f 100%);
-}
+
 
 /* line 6, E:/172 Etrain Education/172_Etrain_Education_html/sass/_extends.scss */
 .member_counter {
@@ -2206,10 +2204,11 @@ ul {
 
 /* line 51, E:/172 Etrain Education/172_Etrain_Education_html/sass/_menu.scss */
 .main_menu .main-menu-item ul .btn_1 {
-  color: #fff;
+  color: white !important;
   font-size: 14px;
   padding: 11.5px 33px;
   margin-left: 41px;
+  background-color:  #9b59b6 !important;
 }
 
 /* line 67, E:/172 Etrain Education/172_Etrain_Education_html/sass/_menu.scss */
@@ -2515,7 +2514,7 @@ ul {
 @media (max-width: 576px) {
   /* line 34, E:/172 Etrain Education/172_Etrain_Education_html/sass/_banner.scss */
   .banner_part .banner_text .banner_text_iner {
-    vertical-align: bottom;
+    padding-bottom:200px ;
   }
 }
 
