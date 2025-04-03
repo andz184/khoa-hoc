@@ -1,6 +1,6 @@
 @extends('layouts.client')
 
-@section('title', 'Đăng nhập')
+@section('title', 'Quên mật khẩu')
 
 @section('content')
 <div class="login-container">
@@ -9,10 +9,16 @@
             <div class="site-title">
                 <span class="text-gradient">KhoaHocAI</span><span class="text-pro">.Pro</span>
             </div>
-            <h2>Đăng nhập</h2>
+            <h2>Quên mật khẩu?</h2>
         </div>
 
-        <form method="POST" action="{{ route('login') }}" class="login-form">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('password.email') }}" class="login-form">
             @csrf
 
             <div class="form-group">
@@ -31,47 +37,15 @@
                 @enderror
             </div>
 
-            <div class="form-group">
-                <label for="password">Mật khẩu</label>
-                <div class="input-group">
-                    <span class="input-icon">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                           name="password" required autocomplete="current-password">
-                    <span class="toggle-password">
-                        <i class="far fa-eye"></i>
-                    </span>
-                </div>
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-
-            <div class="form-group remember-forgot">
-                <div class="remember-me">
-                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <label for="remember">Ghi nhớ đăng nhập</label>
-                </div>
-                @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}" class="forgot-password">
-                        Quên mật khẩu?
-                    </a>
-                @endif
-            </div>
-
             <button type="submit" class="btn-login">
-                Đăng nhập
+                Gửi link đặt lại mật khẩu
             </button>
 
-            <!-- Tạm thời ẩn phần đăng ký
             <div class="register-link">
-                Chưa có tài khoản?
-                <a href="{{ route('register') }}">Đăng ký ngay</a>
+                <a href="{{ route('login') }}">
+                    <i class="fas fa-arrow-left"></i> Quay lại đăng nhập
+                </a>
             </div>
-            -->
         </form>
     </div>
 </div>
@@ -161,13 +135,6 @@
     color: #bb99ff;
 }
 
-.toggle-password {
-    position: absolute;
-    right: 15px;
-    color: #bb99ff;
-    cursor: pointer;
-}
-
 .form-control {
     width: 100%;
     padding: 10px 45px;
@@ -183,47 +150,6 @@
     background: rgba(255, 255, 255, 0.08);
     border-color: #bb99ff;
     box-shadow: 0 0 0 3px rgba(187, 153, 255, 0.25);
-}
-
-.remember-forgot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.remember-me {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #e5e0ff;
-}
-
-.remember-me input[type="checkbox"] {
-    accent-color: #bb99ff;
-    width: 16px;
-    height: 16px;
-    margin: 0;
-}
-
-.remember-me label {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1;
-    cursor: pointer;
-    user-select: none;
-}
-
-.forgot-password {
-    color: #bb99ff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.forgot-password:hover {
-    color: #cd9cff;
-    text-decoration: none;
 }
 
 .btn-login {
@@ -248,7 +174,6 @@
 
 .register-link {
     text-align: center;
-    color: #e5e0ff;
 }
 
 .register-link a {
@@ -256,11 +181,24 @@
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .register-link a:hover {
     color: #cd9cff;
     text-decoration: none;
+}
+
+.alert {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #4ade80;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    font-weight: 500;
 }
 
 .invalid-feedback {
@@ -269,7 +207,6 @@
     margin-top: 5px;
 }
 
-/* Responsive Design */
 @media (max-width: 576px) {
     .login-box {
         padding: 25px 20px;
@@ -282,24 +219,10 @@
     .login-header h2 {
         font-size: 1.5rem;
     }
+
+    .login-header p {
+        font-size: 1rem;
+    }
 }
 </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Toggle password visibility
-    const togglePassword = document.querySelector('.toggle-password');
-    const passwordInput = document.querySelector('#password');
-
-    togglePassword.addEventListener('click', function() {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-
-        // Toggle eye icon
-        const eyeIcon = this.querySelector('i');
-        eyeIcon.classList.toggle('fa-eye');
-        eyeIcon.classList.toggle('fa-eye-slash');
-    });
-});
-</script>
 @endsection
