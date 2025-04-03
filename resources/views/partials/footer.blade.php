@@ -1,18 +1,34 @@
 <!-- Footer Section Start -->
 <style>
     .footer_part {
-        background-color: #3f51b5;
+        background-color: #14082e;
         padding: 60px 0 20px;
         color: #fff;
         position: relative;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232a1b55' fill-opacity='0.3' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+    .footer_part::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, rgba(183, 109, 212, 0), rgba(183, 109, 212, 0.5), rgba(183, 109, 212, 0));
     }
 
     .footer_part .footer_logo {
         margin-bottom: 20px;
     }
 
-    .footer_part .footer_logo img {
-        max-width: 180px;
+    .footer_part .footer_logo h2 {
+        background: linear-gradient(to right, #e0a2ff, #dfbcff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        font-weight: 700;
     }
 
     .footer_top {
@@ -35,7 +51,7 @@
         bottom: -8px;
         height: 2px;
         width: 40px;
-        background: #ff4081;
+        background: #b76dd4;
     }
 
     .single-footer-widget ul {
@@ -45,7 +61,7 @@
     }
 
     .single-footer-widget ul li {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
     }
 
     .single-footer-widget ul li a {
@@ -58,7 +74,7 @@
     }
 
     .single-footer-widget ul li a:hover {
-        color: #ff4081;
+        color: #b76dd4;
         padding-left: 5px;
         text-decoration: none;
     }
@@ -76,14 +92,15 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.08);
         color: #fff;
         transition: all 0.3s ease;
     }
 
     .single-footer-widget .social-links a:hover {
-        background: #ff4081;
+        background: #b76dd4;
         transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(183, 109, 212, 0.3);
     }
 
     .newsletter_form {
@@ -95,8 +112,8 @@
         width: 100%;
         height: 45px;
         padding: 12px 15px;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 4px;
         color: #fff;
         outline: none;
@@ -111,7 +128,7 @@
         right: 5px;
         top: 5px;
         height: 35px;
-        background: #ff4081;
+        background: #b76dd4;
         color: #fff;
         border: none;
         border-radius: 3px;
@@ -121,7 +138,7 @@
     }
 
     .newsletter_form button:hover {
-        background: #f50057;
+        background: #c686e0;
     }
 
     .footer_bottom {
@@ -144,7 +161,7 @@
 
     .footer-contact-info i {
         margin-right: 8px;
-        color: #ff4081;
+        color: #b76dd4;
     }
 </style>
 
@@ -154,7 +171,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                 <div class="single-footer-widget">
                     <div class="footer_logo">
-                        <h2 style="color: #fff; font-weight: 700;">KhoaHocAI.Pro</h2>
+                        <h2>KhoaHocAI.Pro</h2>
                     </div>
                     <div class="footer-info">
                         <p>Nơi Kiến Tạo Tương Lai Cùng Trí Tuệ Nhân Tạo. Chúng tôi cung cấp các khóa học chất lượng cao về AI và tự động hóa.</p>
@@ -173,6 +190,7 @@
                     <ul>
                         <li><a href="#">AI Cơ bản</a></li>
                         <li><a href="#">Tự động hóa với AI</a></li>
+                        <li><a href="#">Xây dựng AI Agent</a></li>
                     </ul>
                 </div>
             </div>
@@ -182,9 +200,9 @@
                     <h4>Liên hệ</h4>
                     <ul class="footer-contact-info">
                         <li><a href="#"><i class="fas fa-phone-alt"></i> 0384265999</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> khoahocai.pro</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> info@khoahocai.pro</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</a></li>
                     </ul>
-
                 </div>
             </div>
         </div>
