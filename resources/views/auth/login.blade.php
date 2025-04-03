@@ -197,21 +197,48 @@
     align-items: center;
     gap: 8px;
     color: #e5e0ff;
+    position: relative;
 }
 
 .remember-me input[type="checkbox"] {
-    accent-color: #bb99ff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     width: 16px;
     height: 16px;
+    border: 2px solid #bb99ff;
+    border-radius: 3px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
     margin: 0;
+    padding: 0;
+}
+
+.remember-me input[type="checkbox"]:checked {
+    background: #bb99ff;
+}
+
+.remember-me input[type="checkbox"]:checked:after {
+    content: '✓';
+    color: #14082e;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    line-height: 1;
 }
 
 .remember-me label {
     margin: 0;
+    padding: 0;
     font-size: 0.95rem;
-    line-height: 1;
+    line-height: 16px;
     cursor: pointer;
     user-select: none;
+    display: flex;
+    align-items: center;
 }
 
 .forgot-password {
