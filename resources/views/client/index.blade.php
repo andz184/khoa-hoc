@@ -478,7 +478,7 @@ section {
 
 .feature_btn {
     display: inline-block;
-    background: rgba(183, 109, 212, 0.2);
+    background: rgba(43, 30, 76, 0.8);
     border: 2px solid #b76dd4;
     color: #ffffff;
     font-weight: 600;
@@ -488,13 +488,14 @@ section {
     text-decoration: none;
     transition: all 0.3s ease;
     text-align: center;
+    box-shadow: 0 0 10px rgba(183, 109, 212, 0.5);
 }
 
 .feature_btn:hover {
-    background-color: #b76dd4;
+    background-color: rgba(70, 50, 120, 0.8);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(183, 109, 212, 0.4);
+    box-shadow: 0 0 15px rgba(183, 109, 212, 0.7);
 }
 
 .feature_card {
@@ -595,7 +596,7 @@ section {
             </div>
             <div class="about_content">
                 <div class="section_tittle">
-                    <h2>Nơi Kiến Tạo Tương Lai Cùng <span class="text_highlight">Trí Tuệ Nhân Tạo</span></h2>
+                    <h2><span class="text_highlight">Nơi Kiến Tạo Tương Lai</span> Cùng <span class="text_highlight">Trí Tuệ Nhân Tạo</span></h2>
                 </div>
 
                 <p class="about_description">Tại KhoaHocAI.Pro, chúng tôi tự hào mang đến các khóa học AI được xây dựng bởi đội ngũ chuyên gia hàng đầu, những người không chỉ sở hữu năng lực vượt trội trong việc ứng dụng AI.</p>
@@ -840,25 +841,26 @@ section {
 
 .contact_button {
     display: inline-block;
-    background: none;
-    border: 2px solid #9b59b6;
-    color: #9b59b6;
+    background: rgba(43, 30, 76, 0.8);
+    border: 2px solid #b76dd4;
+    color: #ffffff;
     font-weight: 600;
     padding: 12px 28px;
     border-radius: 30px;
     font-size: 15px;
     text-decoration: none;
-    margin-top: 10px;
     transition: all 0.3s ease;
     text-align: center;
-    width: fit-content;
+    box-shadow: 0 0 10px rgba(183, 109, 212, 0.5);
+    margin-top: 20px;
 }
 
 .contact_button:hover {
-    background-color: #9b59b6;
+    background-color: rgba(70, 50, 120, 0.8);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(155, 89, 182, 0.3);
+    box-shadow: 0 0 15px rgba(183, 109, 212, 0.7);
+    text-decoration: none;
 }
 
 @media (max-width: 991px) {
