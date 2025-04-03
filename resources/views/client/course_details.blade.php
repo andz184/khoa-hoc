@@ -15,6 +15,9 @@
 <!-- Thêm thư viện QR Code -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
+<!-- Thêm SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- breadcrumb start-->
     <section class="course_details_area section_padding">
         <div class="container">
@@ -33,7 +36,7 @@
                 <div class="col-lg-12 course_details_left">
                     <div class="main_image">
                         @if($course->thumbnail)
-                            <img class="img-fluid course-thumbnail" src="{{ Storage::url($course->thumbnail) }}" alt="{{ $course->title }}">
+                            <img class="img-fluid course-thumbnail" src="{{ env('APP_URL') . '/storage/app/public/' . $course->thumbnail }}" alt="{{ $course->title }}">
                         @else
                             <img class="img-fluid course-thumbnail" src="{{ asset('assets/img/single_cource.png') }}" alt="{{ $course->title }}">
                         @endif
@@ -192,10 +195,18 @@
                             </div>
 
                             <div class="alert alert-info">
-                                <i class="fas fa-info-circle"></i> Sau khi chuyển khoản, vui lòng chờ trong giây lát để chúng tôi xác nhận thanh toán.
+                                <i class="fas fa-info-circle"></i> Sau khi chuyển khoản, vui lòng nhấn nút xác nhận thanh toán bên dưới.
                             </div>
 
-                            <button type="button" class="btn btn-secondary" onclick="showRegistrationForm()">Quay lại</button>
+                            <div class="d-flex justify-content-center gap-3 mt-4">
+                                <button type="button" class="btn btn-secondary" onclick="showRegistrationForm()">Quay lại</button>
+                                <button type="button" class="btn btn-primary" id="confirmPayment" onclick="confirmPayment()">Xác nhận thanh toán</button>
+                            </div>
+
+                            <!-- Thông báo thành công -->
+                            <div id="successMessage" class="alert alert-success mt-4" style="display: none;">
+                                <i class="fas fa-check-circle"></i> Đăng ký khóa học thành công! Vui lòng kiểm tra email của bạn.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -206,8 +217,12 @@
 <style>
 .course_details_area {
     padding: 80px 0 100px;
-    background-color: #1a103c;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236a4c93' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-color: #0f081a;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(120, 60, 180, 0.2) 0%, rgba(0, 0, 0, 0) 25%),
+        radial-gradient(circle at 90% 80%, rgba(120, 60, 180, 0.2) 0%, rgba(0, 0, 0, 0) 25%),
+        radial-gradient(circle at 50% 50%, rgba(60, 20, 100, 0.1) 0%, rgba(0, 0, 0, 0) 60%);
+    background-attachment: fixed;
 }
 
 .course-header {
@@ -244,7 +259,7 @@
     transform: translateX(-50%);
     width: 100px;
     height: 3px;
-    background: #9b59b6;
+    background: #CD9CFF;
     border-radius: 3px;
 }
 
@@ -295,6 +310,33 @@
     max-width: 100%;
 }
 
+.content_wrapper .title {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.content_wrapper .content {
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.7;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+}
+
+.content_wrapper .content p,
+.content_wrapper .content span,
+.content_wrapper .content li,
+.content_wrapper .content a,
+.content_wrapper .content h1,
+.content_wrapper .content h2,
+.content_wrapper .content h3,
+.content_wrapper .content h4,
+.content_wrapper .content h5,
+.content_wrapper .content h6 {
+    color: #333333 !important;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+}
+
 .course-outline {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -341,7 +383,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(20, 8, 46, 0.95);
+    background: rgba(15, 8, 26, 0.95);
     padding: 20px 0;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
     z-index: 1000;
@@ -363,7 +405,7 @@
 .price-info .price {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #cb9dff;
+    color: #CD9CFF;
     margin: 0;
 }
 
@@ -387,19 +429,37 @@
     width: 100%;
     padding: 15px 30px;
     border: none;
-    border-radius: 10px;
-    background: #9b59b6;
+    border-radius: 50px;
+    background: #CD9CFF;
     color: #fff;
     font-weight: 600;
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+    box-shadow: 0 8px 20px rgba(183, 109, 212, 0.5);
+    position: relative;
+    overflow: hidden;
 }
 
 .enroll-btn:hover {
-    background: #8e44ad;
-    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.5);
+    background: #d7adff;
+    box-shadow: 0 10px 25px rgba(183, 109, 212, 0.6);
+    transform: translateY(-2px);
+}
+
+.enroll-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s ease;
+}
+
+.enroll-btn:hover::before {
+    left: 100%;
 }
 
 /* Modal Styles */
@@ -407,24 +467,44 @@
     border: none;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background-color: #fff;
 }
 
 .modal-header {
-    background: #9b59b6;
-    background: #0d6efd;
+    background: #8a4cbf;
     border-bottom: none;
     padding: 20px 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-title {
+    color: white;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.btn-close {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    opacity: 0.8;
+}
+
+.btn-close:hover {
+    opacity: 1;
 }
 
 .modal-body {
     padding: 2.5rem;
+    background-color: #fff;
 }
 
 .price .amount {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #0d6efd;
+    color: #CD9CFF;
     margin: 20px 0;
 }
 
@@ -441,7 +521,7 @@
 
 .bank-info {
     background-color: #f8f9fa;
-    border-left: 4px solid #0d6efd;
+    border-left: 4px solid #CD9CFF;
     border-radius: 10px;
     padding: 25px;
 }
@@ -456,10 +536,14 @@
     border-bottom: none;
 }
 
+.bank-info ul li .fw-bold.text-primary {
+    color: #CD9CFF !important;
+}
+
 .alert-info {
-    background-color: #e8f4ff;
+    background-color: rgba(205, 156, 255, 0.1);
     border: none;
-    color: #004085;
+    color: #8a4cbf;
     border-radius: 10px;
     padding: 15px 20px;
     margin: 20px 0;
@@ -477,11 +561,12 @@
     padding: 12px 15px;
     transition: all 0.3s ease;
     font-size: 1rem;
+    background-color: #fff;
 }
 
 .form-control:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    border-color: #CD9CFF;
+    box-shadow: 0 0 0 0.25rem rgba(205, 156, 255, 0.15);
 }
 
 .btn {
@@ -494,26 +579,58 @@
 }
 
 .btn-primary {
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    background-color: #CD9CFF !important;
+    border-color: #8a4cbf !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    padding: 13px 40px !important;
+    border-radius: 50px !important;
+    font-size: 16px !important;
+    box-shadow: 0 8px 20px rgba(183, 109, 212, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn-primary:hover {
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
+    background-color: #d7adff !important;
+    border-color: #8a4cbf !important;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+    box-shadow: 0 10px 25px rgba(183, 109, 212, 0.6) !important;
+}
+
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 .btn-secondary {
     background-color: #6c757d;
     border-color: #6c757d;
+    color: white;
+    padding: 13px 40px !important;
+    border-radius: 50px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 8px 20px rgba(108, 117, 125, 0.3) !important;
 }
 
 .btn-secondary:hover {
     background-color: #5c636a;
     border-color: #565e64;
     transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(108, 117, 125, 0.4) !important;
 }
 
 .form-control[type="tel"] {
@@ -584,14 +701,14 @@
 }
 
 .price {
-    color: #0d6efd;
+    color: #CD9CFF;
     font-size: 1.8rem;
     font-weight: bold;
     margin: 0;
 }
 
 .amount {
-    color: #0d6efd;
+    color: #CD9CFF;
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -612,9 +729,10 @@
 .countdown {
     display: flex;
     gap: 10px;
-    background: #f8f9fa;
-    padding: 8px;
-    border-radius: 8px;
+    background: rgba(245, 245, 250, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 
 .countdown-item {
@@ -622,16 +740,16 @@
     flex-direction: column;
     align-items: center;
     min-width: 45px;
-    background: #fff;
-    padding: 5px;
-    border-radius: 5px;
+    background: #ffffff;
+    padding: 8px 5px;
+    border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .countdown-item span:first-child {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #0d6efd;
+    color: #bb99ff;
 }
 
 .countdown-item .label {
@@ -683,7 +801,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #0d6efd;
+    background: #CD9CFF;
     color: white;
     font-weight: bold;
     font-size: 1.2rem;
@@ -712,7 +830,7 @@
     background: #f8f9fa;
     padding: 15px;
     border-radius: 8px;
-    border-left: 3px solid #0d6efd;
+    border-left: 3px solid #CD9CFF;
 }
 
 .lesson-objectives strong {
@@ -805,9 +923,10 @@ function isValidPhone(phone) {
 
 // Thêm function đếm ngược
 function startCountdown() {
-    // Đặt thời gian kết thúc (ví dụ: 7 ngày từ hiện tại)
+    // Đặt thời gian kết thúc là 24h ngày T+2 (2 ngày sau hiện tại)
     const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 7);
+    endDate.setDate(endDate.getDate() + 2); // Ngày T+2
+    endDate.setHours(23, 59, 59, 999); // Đặt thời gian 23:59:59
 
     function updateCountdown() {
         const now = new Date();
@@ -831,6 +950,78 @@ function startCountdown() {
 
     updateCountdown();
     const countdownTimer = setInterval(updateCountdown, 1000);
+}
+
+// Thêm hàm xác nhận thanh toán vào phần JavaScript
+function confirmPayment() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const courseId = "{{ $course->id }}";
+    const courseTitle = "{{ $course->title }}";
+    const courseCode = "{{ $course->course_code }}";
+    const amount = {{ $course->getCurrentPrice() }};
+    const transferContent = document.getElementById('transferContent').textContent;
+
+    // Hiển thị trạng thái đang xử lý
+    const confirmBtn = document.getElementById('confirmPayment');
+    confirmBtn.disabled = true;
+    confirmBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...';
+
+    // Chuẩn bị dữ liệu gửi đi
+    const webhookData = {
+        data: {
+            name: name,
+            email: email,
+            phone: phone,
+            course_id: courseId,
+            course_code: courseCode,
+            course_title: courseTitle,
+            amount: amount,
+            transfer_content: transferContent,
+            timestamp: new Date().toISOString()
+        }
+    };
+
+    // Gửi request đến webhook
+    fetch('https://mvp.xcel.bot/webhook-test/222e9e1e-a782-4b96-a077-15e7b1efaf49', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        mode: 'cors',
+        body: JSON.stringify(webhookData)
+    })
+    .then(response => {
+        // Hiển thị thông báo thành công bất kể response
+        showSuccessMessage();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Vẫn hiển thị thông báo thành công ngay cả khi có lỗi
+        showSuccessMessage();
+    });
+}
+
+// Hàm hiển thị thông báo thành công
+function showSuccessMessage() {
+    // Ẩn nút xác nhận
+    const confirmBtn = document.getElementById('confirmPayment');
+    confirmBtn.style.display = 'none';
+
+    // Đóng modal sau 3 giây
+    setTimeout(function() {
+        $('#enrollmentModal').modal('hide');
+
+        // Hiển thị thông báo SweetAlert2
+        Swal.fire({
+            icon: 'success',
+            title: 'Đăng ký thành công!',
+            text: 'Vui lòng kiểm tra email của bạn.',
+            confirmButtonColor: '#8a4cbf'
+        });
+    }, 3000);
 }
 </script>
 

@@ -216,3 +216,69 @@
     font-size: 20px;
     margin-bottom: 0;
 }
+
+/* Định nghĩa chung cho tất cả các loại nút */
+.btn_1, .feature_btn, .contact_button, .btn-primary, .btn-outline-light, .btn-secondary {
+    display: inline-block !important;
+    background: #CD9CFF !important;
+    border: 2px solid #8a4cbf !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    padding: 13px 40px !important;
+    border-radius: 50px !important;
+    font-size: 16px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    text-align: center !important;
+    box-shadow: 0 8px 20px rgba(183, 109, 212, 0.5), 0 0 15px rgba(205, 156, 255, 0.5) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.btn_1:hover, .feature_btn:hover, .contact_button:hover, .btn-primary:hover, .btn-outline-light:hover, .btn-secondary:hover {
+    background: #d7adff !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(183, 109, 212, 0.6), 0 0 20px rgba(205, 156, 255, 0.6) !important;
+    text-decoration: none !important;
+}
+
+/* Vô hiệu hóa bất kỳ hiệu ứng after nào */
+.btn_1::after, .feature_btn::after, .contact_button::after, .btn-primary::after, .btn-outline-light::after, .btn-secondary::after {
+    display: none !important;
+}
+
+/* Thêm hiệu ứng ánh sáng nội tuyến */
+.btn_1::before, .feature_btn::before, .contact_button::before, .btn-primary::before, .btn-outline-light::before, .btn-secondary::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+    transform: translateX(-100%) !important;
+    transition: all 0.6s ease !important;
+}
+
+.btn_1:hover::before, .feature_btn:hover::before, .contact_button:hover::before, .btn-primary:hover::before, .btn-outline-light:hover::before, .btn-secondary:hover::before {
+    transform: translateX(100%) !important;
+}
+
+/* Các hiệu ứng đặc biệt cho nút */
+.nav-item .btn_1,
+.banner_part .banner_text .btn_1,
+.feature_part .single_feature_text .btn_1,
+.learning_part .learning_member_text .btn_1 {
+    background: #CD9CFF !important;
+    color: #ffffff !important;
+    border: 2px solid #8a4cbf !important;
+    box-shadow: 0 8px 20px rgba(183, 109, 212, 0.5), 0 0 15px rgba(205, 156, 255, 0.5) !important;
+    border-radius: 50px !important;
+}
+
+/* Đảm bảo nút đầy đủ chiều rộng khi cần */
+.btn-block {
+    display: block !important;
+    width: 100% !important;
+}

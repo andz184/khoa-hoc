@@ -314,7 +314,7 @@
                                 <div class="course-category">{{ $course->categories->first()->name }}</div>
                             @endif
                             @if($course->thumbnail)
-                                <img src="{{ Storage::url($course->thumbnail) }}" alt="{{ $course->title }}">
+                                <img src="{{ env('APP_URL') . '/storage/app/public/' . $course->thumbnail }}" alt="{{ $course->title }}">
                             @else
                                 <img src="{{ asset('assets/img/special_cource_1.png') }}" alt="{{ $course->title }}">
                             @endif

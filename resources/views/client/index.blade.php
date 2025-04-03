@@ -199,18 +199,30 @@ p {
 
 /* Button Styles */
 .btn_1 {
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    padding: 10px 24px;
-    border-radius: 25px;
-    background: #9b59b6 !important;
-    border: 2px solid #9b59b6 !important;
+    display: inline-block;
+    background: #CD9CFF !important;
+    border: 2px solid #b76dd4 !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    text-decoration: none;
     transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(183, 109, 212, 0.4) !important;
+    margin-top: 20px;
 }
 
 .btn_1:hover {
-    background: transparent !important;
-    color: #9b59b6 !important;
+    background: #352863 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(125, 75, 170, 0.5) !important;
+}
+
+.btn_1::after {
+    display: none;
 }
 
 /* Feature Section */
@@ -355,7 +367,7 @@ section {
                         <p>Trong khóa học này, anh/chị không chỉ được học về cách <span class="text-emphasis">ứng dụng AI vào thực tế</span>, mà còn học về
                             <span class="text-emphasis">tự động hoá</span> và kết nối 2 công nghệ mạnh mẽ nhất với nhau để xây dựng các <span class="text-emphasis">Hệ thống AI
                             Automation</span> <span class="text-highlight">VƯỢT XA SỨC TƯỞNG TƯỢNG</span> của nhiều người.</p>
-                        <a href="" class="btn_1">Xem tất cả khóa học </a>
+                            <a href="{{ route('course') }}" class="feature_btn">Xem Tất Cả Khóa Học</a>
                     </div>
                 </div>
             </div>
@@ -476,11 +488,11 @@ section {
     margin-bottom: 25px;
 }
 
-.feature_btn {
+.feature_btn, .contact_button {
     display: inline-block;
-    background: rgba(43, 30, 76, 0.8);
-    border: 2px solid #b76dd4;
-    color: #ffffff;
+    background: #2c2152 !important;
+    border: 2px solid #7d4baa !important;
+    color: #ffffff !important;
     font-weight: 600;
     padding: 12px 28px;
     border-radius: 30px;
@@ -488,14 +500,16 @@ section {
     text-decoration: none;
     transition: all 0.3s ease;
     text-align: center;
-    box-shadow: 0 0 10px rgba(183, 109, 212, 0.5);
+    box-shadow: 0 0 10px rgba(125, 75, 170, 0.3) !important;
+    margin-top: 20px;
 }
 
-.feature_btn:hover {
-    background-color: rgba(70, 50, 120, 0.8);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px rgba(183, 109, 212, 0.7);
+.feature_btn:hover, .contact_button:hover {
+    background: #352863 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(125, 75, 170, 0.5) !important;
+    text-decoration: none;
 }
 
 .feature_card {
@@ -603,7 +617,7 @@ section {
 
                 <p class="about_description">Chúng tôi cam kết cung cấp nội dung cập nhật mới nhất, giúp bạn nắm bắt cách ứng dụng công nghệ AI tiên tiến và tự tay xây dựng các AI Agent từ con số 0.</p>
 
-                <a href="{{ route('course') }}" class="contact_button">Xem tất cả khóa học</a>
+                <a href="{{ route('course') }}" class="feature_btn">Xem Tất Cả Khóa Học</a>
             </div>
         </div>
     </div>
@@ -841,8 +855,8 @@ section {
 
 .contact_button {
     display: inline-block;
-    background: rgba(43, 30, 76, 0.8);
-    border: 2px solid #b76dd4;
+    background: #2c2152;
+    border: 2px solid #7d4baa;
     color: #ffffff;
     font-weight: 600;
     padding: 12px 28px;
@@ -851,15 +865,15 @@ section {
     text-decoration: none;
     transition: all 0.3s ease;
     text-align: center;
-    box-shadow: 0 0 10px rgba(183, 109, 212, 0.5);
+    box-shadow: 0 0 10px rgba(125, 75, 170, 0.3);
     margin-top: 20px;
 }
 
 .contact_button:hover {
-    background-color: rgba(70, 50, 120, 0.8);
+    background: #352863;
     color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px rgba(183, 109, 212, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(125, 75, 170, 0.5);
     text-decoration: none;
 }
 
@@ -1319,7 +1333,7 @@ section {
                             <div class="course-category">{{ $course->categories->first()->name }}</div>
                         @endif
                         @if($course->thumbnail)
-                            <img src="{{ Storage::url($course->thumbnail) }}" alt="{{ $course->title }}">
+                            <img src="{{ env('APP_URL') . '/storage/app/public/' . $course->thumbnail }}" alt="{{ $course->title }}">
                         @else
                             <img src="{{ asset('assets/img/special_cource_1.png') }}" alt="{{ $course->title }}">
                         @endif

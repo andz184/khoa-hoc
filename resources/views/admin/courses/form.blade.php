@@ -247,7 +247,7 @@
             @enderror
             @if(isset($course) && $course->thumbnail)
                 <div class="mt-2">
-                    <img src="{{ Storage::url($course->thumbnail) }}" alt="Thumbnail" class="img-thumbnail" style="max-height: 200px">
+                    <img src="{{ env('APP_URL') . '/storage/app/public/' . $course->thumbnail }}" alt="Thumbnail" class="img-thumbnail" style="max-height: 200px">
                 </div>
             @endif
         </div>

@@ -44,7 +44,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
                                         @if($course->thumbnail)
-                                            <img src="{{ asset('storage/' . $course->thumbnail) }}" alt="{{ $course->title }}" class="img-thumbnail" style="max-height: 50px; width: auto;">
+                                            <img src="{{ env('APP_URL') . '/storage/app/public/' . $course->thumbnail }}" alt="{{ $course->title }}" class="img-thumbnail" style="max-height: 50px">
                                         @else
                                             <span class="text-muted">No image</span>
                                         @endif

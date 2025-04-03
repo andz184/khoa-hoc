@@ -7,8 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title', config('app.name', 'Khoá Học AI'))</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo.jpg') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/logo/logo-new.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/logo/logo-new.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/logo/logo-new.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo/logo-new.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo/logo-new.png') }}" type="image/x-icon">
+    <meta name="theme-color" content="#1a103c">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <!-- animate CSS -->
@@ -30,9 +34,54 @@
     <style>
         /* Theme Reset for Dark Background */
         body {
-            background-color: #1a103c;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236a4c93' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-color: #0f081a;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(120, 60, 180, 0.2) 0%, rgba(0, 0, 0, 0) 25%),
+                radial-gradient(circle at 90% 80%, rgba(120, 60, 180, 0.2) 0%, rgba(0, 0, 0, 0) 25%),
+                radial-gradient(circle at 50% 50%, rgba(60, 20, 100, 0.1) 0%, rgba(0, 0, 0, 0) 60%);
+            background-attachment: fixed;
             color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Add glowing orbs effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 20%;
+            left: 10%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(123, 31, 162, 0.15) 0%, rgba(32, 0, 44, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 15s infinite alternate ease-in-out;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            bottom: 20%;
+            right: 10%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(103, 58, 183, 0.15) 0%, rgba(32, 0, 44, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 18s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(30px, -30px);
+            }
+            100% {
+                transform: translate(-30px, 30px);
+            }
         }
 
         .section {

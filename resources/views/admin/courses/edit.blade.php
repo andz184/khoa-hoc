@@ -126,8 +126,8 @@
                                 <div class="form-group">
                                     <label for="thumbnail">Ảnh thumbnail</label>
                                     @if($course->thumbnail)
-                                        <div class="mb-2">
-                                            <img src="{{ asset('storage/' . $course->thumbnail) }}" alt="Current thumbnail" class="img-thumbnail" style="max-height: 200px; width: auto;">
+                                        <div class="mb-3">
+                                            <img src="{{ env('APP_URL') . '/storage/app/public/' . $course->thumbnail }}" alt="Current thumbnail" class="img-thumbnail" style="max-height: 200px;">
                                         </div>
                                     @endif
                                     <div class="custom-file">
