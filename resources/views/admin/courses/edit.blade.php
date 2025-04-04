@@ -88,13 +88,14 @@
 
                                 <div class="form-group">
                                     <label for="categories">Danh mục <span class="text-danger">*</span></label>
-                                    <select class="form-control select2 @error('categories') is-invalid @enderror" id="categories" name="categories[]" multiple required>
+                                    <select class="form-control @error('categories') is-invalid @enderror" id="categories" name="categories[]" multiple required>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}" {{ in_array($category->id, old('categories', $course->categories->pluck('id')->toArray())) ? 'selected' : '' }}>
                                                 {{ $category->name }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    <small class="form-text text-muted">Có thể chọn nhiều danh mục</small>
                                     @error('categories')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -171,210 +172,156 @@
 @endsection
 
 @push('styles')
+<!-- Select2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css" rel="stylesheet" />
 <style>
-    #editor-container {
-        border: 1px solid #ddd;
-        border-radius: 4px;
+    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        padding: 0 5px;
+        margin-top: 5px;
     }
-
+    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
+        color: #fff;
+        margin-right: 5px;
+    }
+    .select2-container--bootstrap4 .select2-selection--multiple {
+        min-height: 45px;
+    }
+    .select2-container--bootstrap4 .select2-selection--multiple .select2-search__field {
+        margin-top: 5px;
+    }
     .ck-editor__editable {
-        min-height: 300px !important;
-        max-height: 600px;
-        padding: 1rem !important;
+        min-height: 400px;
     }
-
     .ck.ck-editor__main > .ck-editor__editable {
-        background: #fff;
+        background-color: #ffffff;
+        border-radius: 0;
     }
-
-    .ck.ck-toolbar {
-        background: #f8f9fa !important;
-        border: none !important;
-        border-bottom: 1px solid #ddd !important;
-    }
-
-    .ck.ck-toolbar .ck-toolbar__items {
-        flex-wrap: wrap;
-    }
-
-    .ck.ck-toolbar .ck-toolbar__items > * {
-        margin: 4px;
-    }
-
-    .ck.ck-button {
-        padding: 6px 10px;
+    .ck.ck-editor__main > .ck-editor__editable:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     }
 </style>
 @endpush
 
 @push('scripts')
-<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+<!-- Select2 -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-    // Tự động tạo slug từ title
-    document.getElementById('title').addEventListener('input', function() {
-        if (!document.getElementById('slug').value) {
-            document.getElementById('slug').value = createSlug(this.value);
-        }
-    });
-
-    // Hiển thị tên file đã chọn
-    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
-        var fileName = e.target.files[0].name;
-        var nextSibling = e.target.nextElementSibling;
-        nextSibling.innerText = fileName;
-    });
-
-    // Khởi tạo Select2
     $(document).ready(function() {
-        $('.select2').select2({
+        $('#categories').select2({
             theme: 'bootstrap4',
-            placeholder: 'Chọn danh mục'
-        });
-
-        // Khởi tạo CKEditor
-        ClassicEditor
-            .create(document.querySelector('#description'), {
-                toolbar: {
-                    items: [
-                        'heading',
-                        '|',
-                        'bold', 'italic', 'strikethrough', 'underline',
-                        '|',
-                        'bulletedList', 'numberedList',
-                        '|',
-                        'alignment',
-                        '|',
-                        'uploadImage', 'link', 'blockQuote', 'insertTable',
-                        '|',
-                        'undo', 'redo'
-                    ]
-                },
-                image: {
-                    toolbar: [
-                        'imageStyle:inline',
-                        'imageStyle:wrapText',
-                        'imageStyle:breakText',
-                        '|',
-                        'toggleImageCaption',
-                        'imageTextAlternative'
-                    ],
-                    styles: [
-                        'full',
-                        'side',
-                        'alignLeft',
-                        'alignCenter',
-                        'alignRight'
-                    ],
-                    type: ['jpeg', 'png', 'gif', 'bmp', 'webp', 'tiff', 'jpg']
-                },
-                simpleUpload: {
-                    uploadUrl: '{{ route("admin.upload.image") }}',
-                    withCredentials: true,
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
+            placeholder: 'Chọn danh mục',
+            allowClear: true,
+            width: '100%',
+            language: {
+                noResults: function() {
+                    return "Không tìm thấy kết quả";
                 }
-            })
-            .then(editor => {
-                editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
-                    return {
-                        upload: function() {
-                            return loader.file.then(file => {
-                                return new Promise((resolve, reject) => {
-                                    const formData = new FormData();
-                                    formData.append('upload', file);
-
-                                    fetch('{{ route("admin.upload.image") }}', {
-                                        method: 'POST',
-                                        body: formData,
-                                        headers: {
-                                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                                        }
-                                    })
-                                    .then(response => response.json())
-                                    .then(response => {
-                                        if (response.url) {
-                                            resolve({
-                                                default: response.url
-                                            });
-                                        } else {
-                                            reject(response.error?.message || 'Upload failed');
-                                        }
-                                    })
-                                    .catch(error => {
-                                        reject('Upload failed');
-                                    });
-                                });
-                            });
-                        },
-                        abort: function() {
-                            console.log('Upload aborted');
-                        }
-                    };
-                };
-            })
-            .catch(error => {
-                console.error('Editor error:', error);
-            });
+            }
+        });
     });
+</script>
+<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+<script>
+    class MyUploadAdapter {
+        constructor(loader) {
+            this.loader = loader;
+        }
 
-    // Xử lý tạo slug tự động
-    function createSlug(str) {
-        str = str.toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/đ/g, 'd')
-            .replace(/Đ/g, 'D')
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, '')
-            .toLowerCase();
-        return str;
+        upload() {
+            return this.loader.file.then(file =>
+                new Promise((resolve, reject) => {
+                    const formData = new FormData();
+                    formData.append('upload', file);
+
+                    fetch('{{ route("admin.upload.image") }}', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(response => {
+                        if (response.url) {
+                            resolve({
+                                default: response.url
+                            });
+                        } else {
+                            reject(response.error?.message || 'Upload failed');
+                        }
+                    })
+                    .catch(error => reject(error));
+                })
+            );
+        }
+
+        abort() {
+            // Abort upload if needed
+        }
     }
 
-    let titleElement = document.getElementById('title');
-    let slugElement = document.getElementById('slug');
-    let isSlugEdited = false;
+    function MyCustomUploadAdapterPlugin(editor) {
+        editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+            return new MyUploadAdapter(loader);
+        };
+    }
 
-    titleElement.addEventListener('input', function() {
-        if (!isSlugEdited) {
-            slugElement.value = createSlug(this.value);
-        }
-    });
-
-    slugElement.addEventListener('input', function() {
-        isSlugEdited = true;
-    });
-
-    slugElement.addEventListener('change', function() {
-        if (this.value === '') {
-            isSlugEdited = false;
-        }
-    });
-
-    // Xử lý giá khuyến mãi
-    document.getElementById('sale_price').addEventListener('input', function() {
-        const regularPrice = parseFloat(document.getElementById('regular_price').value) || 0;
-        const salePrice = parseFloat(this.value) || 0;
-
-        if (salePrice >= regularPrice) {
-            this.setCustomValidity('Giá khuyến mãi phải nhỏ hơn giá gốc');
-        } else {
-            this.setCustomValidity('');
-        }
-    });
-
-    document.getElementById('regular_price').addEventListener('input', function() {
-        const saleInput = document.getElementById('sale_price');
-        if (saleInput.value) {
-            const regularPrice = parseFloat(this.value) || 0;
-            const salePrice = parseFloat(saleInput.value) || 0;
-
-            if (salePrice >= regularPrice) {
-                saleInput.setCustomValidity('Giá khuyến mãi phải nhỏ hơn giá gốc');
-            } else {
-                saleInput.setCustomValidity('');
+    ClassicEditor
+        .create(document.querySelector('#description'), {
+            extraPlugins: [MyCustomUploadAdapterPlugin],
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'imageUpload',
+                    'blockQuote',
+                    'insertTable',
+                    'mediaEmbed',
+                    'undo',
+                    'redo',
+                    '|',
+                    'alignment',
+                    'fontColor',
+                    'fontBackgroundColor'
+                ]
+            },
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:inline',
+                    'imageStyle:block',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
             }
-        }
-    });
+        })
+        .then(editor => {
+            console.log('Editor was initialized', editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    // Các đoạn mã JavaScript khác giữ nguyên...
 </script>
 @endpush

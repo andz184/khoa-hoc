@@ -10,24 +10,56 @@ class UploadController extends Controller
 {
     public function uploadImage(Request $request)
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+        if ($request->hasFile('upload')) {
+            $file = $request->file('upload');
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/uploads', $filename);
-
-            return response()->json([
-                'success' => true,
-                'url' => Storage::url('uploads/' . $filename)
+            // Validate file
+            $validator = validator(['upload' => $file], [
+                'upload' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048'
             ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'error' => [
+                        'message' => $validator->errors()->first()
+                    ]
+                ]);
+            }
+
+            try {
+                // Generate unique filename
+                $fileName = uniqid() . '_' . $file->getClientOriginalName();
+
+                // Store file
+                $file->move(public_path('uploads'), $fileName);
+
+                $url = asset('uploads/' . $fileName);
+
+                // Return response for CKEditor 4
+                return response()->json([
+                    'uploaded' => 1,
+                    'fileName' => $fileName,
+                    'url' => $url,
+                    'error' => [
+                        'message' => ''
+                    ]
+                ]);
+
+            } catch (\Exception $e) {
+                return response()->json([
+                    'uploaded' => 0,
+                    'error' => [
+                        'message' => 'Error uploading file: ' . $e->getMessage()
+                    ]
+                ]);
+            }
         }
 
         return response()->json([
-            'success' => false,
-            'message' => 'No image file uploaded'
-        ], 400);
+            'uploaded' => 0,
+            'error' => [
+                'message' => 'No file uploaded.'
+            ]
+        ]);
     }
 }
