@@ -65,6 +65,7 @@ body {
     height: auto;
     display: block;
     max-width: 100%;
+    padding-bottom: 250px;
 }
 
 .banner_part .container {
@@ -400,34 +401,24 @@ section {
             <div class="col-sm-6 col-xl-3">
                 <div class="feature_card">
                     <div class="feature_icon_wrapper">
-                        <div class="feature_icon">
-                            <i class="ti-layers"></i>
-                        </div>
                     </div>
-                    <h3 class="feature_title">Nội dung cập nhật mới nhất</h3>
-                    <p class="feature_description">Học cách ứng dụng công nghệ AI và xây dựng các AI Agent từ con số 0.</p>
+                   <img src="{{asset('assets/img/anh169.png')}}" alt="">
                 </div>
             </div>
             <div class="col-sm-6 col-xl-3">
                 <div class="feature_card">
                     <div class="feature_icon_wrapper">
-                        <div class="feature_icon">
-                            <i class="ti-new-window"></i>
-                        </div>
+
                     </div>
-                    <h3 class="feature_title">Phù hợp cho người mới</h3>
-                    <p class="feature_description">Phù hợp cho người mới bắt đầu lẫn chuyên gia muốn nâng cao kỹ năng.</p>
+                    <img src="{{asset('assets/img/anh168.png')}}" alt="">
                 </div>
             </div>
             <div class="col-sm-6 col-xl-3">
                 <div class="feature_card">
                     <div class="feature_icon_wrapper">
-                        <div class="feature_icon">
-                            <i class="ti-light-bulb"></i>
-                        </div>
+
                     </div>
-                    <h3 class="feature_title">Đội ngũ giảng viên luôn sẵn sàng</h3>
-                    <p class="feature_description">Đội ngũ giảng viên luôn sẵn sàng giải đáp thắc mắc và hỗ trợ kể cả trong thời gian học và sau khi hoàn thành khóa học.</p>
+                    <img src="{{asset('assets/img/anh167.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -437,7 +428,7 @@ section {
 <style>
 .feature_part {
     background-color: #1a103c;
-    padding: 80px 0;
+
     position: relative;
     overflow: hidden;
 }
@@ -515,10 +506,12 @@ section {
 .feature_card {
     background-color: #ffffff;
     border-radius: 16px;
-    padding: 30px;
-    margin-bottom: 30px;
+    padding: 10px;
+    margin-bottom: 40px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -527,6 +520,19 @@ section {
 .feature_card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature_card img {
+    width: 100%;
+    height: auto;
+    max-width: 280px;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.feature_card:hover img {
+    transform: scale(1.05);
 }
 
 .feature_icon_wrapper {
@@ -1365,4 +1371,3 @@ section {
 
 
 @endsection
-

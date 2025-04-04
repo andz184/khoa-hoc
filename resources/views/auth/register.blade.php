@@ -10,87 +10,87 @@
                 <span class="text-gradient">KhoaHocAI</span><span class="text-pro">.Pro</span>
             </div>
             <h2>Đăng ký tài khoản</h2>
-        </div>
+                    </div>
 
         <form method="POST" action="{{ route('register') }}" class="login-form">
-            @csrf
+                            @csrf
 
             <div class="form-group">
                 <label for="name">Họ và tên</label>
-                <div class="input-group">
+                                <div class="input-group">
                     <span class="input-icon">
-                        <i class="fas fa-user"></i>
-                    </span>
+                                        <i class="fas fa-user"></i>
+                                    </span>
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                </div>
-                @error('name')
+                                </div>
+                                @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
-                @enderror
-            </div>
+                                @enderror
+                            </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <div class="input-group">
+                                <div class="input-group">
                     <span class="input-icon">
-                        <i class="fas fa-envelope"></i>
-                    </span>
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                            name="email" value="{{ old('email') }}" required autocomplete="email">
-                </div>
-                @error('email')
+                                </div>
+                                @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
-                @enderror
-            </div>
+                                @enderror
+                            </div>
 
             <div class="form-group">
                 <label for="password">Mật khẩu</label>
-                <div class="input-group">
+                                <div class="input-group">
                     <span class="input-icon">
-                        <i class="fas fa-lock"></i>
-                    </span>
+                                        <i class="fas fa-lock"></i>
+                                    </span>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                            name="password" required autocomplete="new-password">
                     <span class="toggle-password">
                         <i class="far fa-eye"></i>
                     </span>
-                </div>
-                @error('password')
+                                </div>
+                                @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
-                @enderror
-            </div>
+                                @enderror
+                            </div>
 
             <div class="form-group">
                 <label for="password-confirm">Xác nhận mật khẩu</label>
-                <div class="input-group">
+                                <div class="input-group">
                     <span class="input-icon">
-                        <i class="fas fa-lock"></i>
-                    </span>
+                                        <i class="fas fa-lock"></i>
+                                    </span>
                     <input id="password-confirm" type="password" class="form-control"
                            name="password_confirmation" required autocomplete="new-password">
                     <span class="toggle-password-confirm">
                         <i class="far fa-eye"></i>
                     </span>
-                </div>
-            </div>
+                                </div>
+                            </div>
 
             <button type="submit" class="btn-login">
                 Đăng ký
-            </button>
+                                </button>
 
             <div class="register-link">
                 Đã có tài khoản?
                 <a href="{{ route('login') }}">Đăng nhập ngay</a>
-            </div>
-        </form>
-    </div>
-</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
 <style>
 .login-container {
@@ -289,5 +289,5 @@ document.addEventListener('DOMContentLoaded', function() {
         eyeIcon.classList.toggle('fa-eye-slash');
     });
 });
-</script>
+    </script>
 @endsection

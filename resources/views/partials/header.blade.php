@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="{{ route('home') }}">
+                <nav class="navbar navbar-expand-lg navbar-light py-0">
+                    <a class="navbar-brand py-0 my-1" href="{{ route('home') }}">
                         <div class="text-logo">
                             <span class="logo-text">KhoaHocAI<span class="logo-dot">.</span>Pro</span>
                         </div>
@@ -22,7 +22,7 @@
                                 <a class="nav-link" href="{{ route('course') }}">Danh sách khóa học</a>
                             </li>
 
-                            <li class="d-none d-lg-block">
+                            <li class="nav-item login-btn-container">
                                 @auth
                                     @if (Auth::user()->role_id == '2')
                                         <a class="btn_1" href="{{ route('home-learn') }}">Vào phần học bài</a>
@@ -32,7 +32,7 @@
                                         <a class="btn_1" href="{{ route('dashboard') }}">Đăng nhập</a>
                                     @endif
                                 @else
-                                    <a class="btn_1" href="{{ route('login') }}">Đăng nhập</a>
+                                    <a class="btn_1" href="{{ route('login') }}">Đăng Nhập</a>
                                 @endauth
                             </li>
                         </ul>
@@ -50,17 +50,66 @@
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232a1b55' fill-opacity='0.3' fill-rule='evenodd'/%3E%3C/svg%3E");
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 15px 0;
+    padding: 8px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+.login-btn-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .navbar-light .navbar-nav .nav-link {
     color: #ffffff !important;
     font-weight: 500;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    padding: 10px 18px;
+    padding: 8px 15px;
+    margin: 0 2px;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.btn_1 {
+    background-color: #b76dd4;
+    border: 2px solid #b76dd4;
+    color: white !important;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(183, 109, 212, 0.3);
+    transition: all 0.3s ease;
+    margin: 0 8px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn_1:hover {
+    background-color: transparent;
+    color: #b76dd4 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(183, 109, 212, 0.2);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    padding: 4px 8px;
+    margin: 0 2px;
+}
+
+.home_menu {
+    padding-bottom: 0;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 6px 10px;
+    margin: 0 2px;
     transition: all 0.3s ease;
 }
 
@@ -69,22 +118,9 @@
     color: #cb9dff !important;
 }
 
-.btn_1 {
-    background-color: #b76dd4;
-    border: 2px solid #b76dd4;
-    color: white;
-    font-weight: 600;
-    padding: 10px 22px;
-    border-radius: 30px;
-    box-shadow: 0 10px 20px rgba(183, 109, 212, 0.3);
-    transition: all 0.3s ease;
-}
-
-.btn_1:hover {
-    background-color: transparent;
-    color: #b76dd4;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(183, 109, 212, 0.2);
+.navbar-nav {
+    display: flex;
+    align-items: center;
 }
 
 #mobile-menu-toggle {
@@ -103,7 +139,7 @@
 }
 
 .logo-text {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 800;
     background: linear-gradient(to right, #ffffff, #e0a2ff, #ffcd4a);
     -webkit-background-clip: text;
@@ -116,14 +152,23 @@
 .logo-dot {
     color: #b76dd4;
     -webkit-text-fill-color: #b76dd4;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 900;
+}
+
+.container {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navbar {
+    min-height: auto;
 }
 
 @media (max-width: 991px) {
     .navbar-collapse {
         background: #14082e;
-        padding: 20px;
+        padding: 10px;
         border-radius: 10px;
         box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         position: absolute;
@@ -166,7 +211,7 @@
     }
 
     .nav-link {
-        padding: 15px 20px !important;
+        padding: 10px !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         color: #ffffff !important;
         font-weight: 500;

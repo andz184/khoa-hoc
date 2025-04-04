@@ -42,7 +42,7 @@
                         @endif
                     </div>
                     <div class="content_wrapper">
-                        <h4 class="title">Chi tiết khóa học</h4>
+
                         <div class="content">
                             {!! $course->description !!}
                         </div>
@@ -95,20 +95,17 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="enrollment-info">
-                        <div class="info-item">
-                            <i class="fas fa-users"></i>
-                            <div class="slots-price-info">
-                                @if($course->original_price && $course->original_price != $course->getCurrentPrice())
-                                    <span class="original-price-small"><del>{{ number_format($course->original_price, 0, ',', '.') }} VNĐ</del></span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-calendar-alt"></i>
+
+                            @if($course->original_price && $course->original_price != $course->getCurrentPrice())
+                            <span class="original-price-small"><del>{{ number_format($course->original_price, 0, ',', '.') }} VNĐ</del></span>
+                        @endif
+
+
+
                             <span>{{ $course->schedule }}</span>
-                        </div>
+
                         <div class="info-item countdown-container">
-                            <i class="fas fa-clock"></i>
+
                             <div class="countdown-wrapper">
                                 <span>Kết thúc sau:</span>
                                 <div id="countdown" class="countdown">
@@ -134,7 +131,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <button class="enroll-btn" onclick="openEnrollModal()">Mua khóa học</button>
+                    <button class="enroll-btn" onclick="openEnrollModal()">Đăng Ký</button>
                 </div>
             </div>
         </div>
@@ -217,7 +214,7 @@
 <style>
 .course_details_area {
     padding: 80px 0 100px;
-    background-color: #0f081a;
+    background-color: #1a103c;
     background-image:
         radial-gradient(circle at 10% 20%, rgba(120, 60, 180, 0.2) 0%, rgba(0, 0, 0, 0) 25%),
         radial-gradient(circle at 90% 80%, rgba(120, 60, 180, 0.2) 0%, rgba(0, 0, 0, 0) 25%),
@@ -230,6 +227,7 @@
     margin-bottom: 50px;
     padding-top: 80px;
     color: #ffffff;
+    animation: fadeIn 0.8s ease-out;
 }
 
 .course-title {
@@ -240,6 +238,10 @@
     position: relative;
     padding-bottom: 1rem;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    background: linear-gradient(to right, #ffffff, #dfbcff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .course-title:before {
@@ -249,6 +251,7 @@
     color: #cb9dff;
     margin-right: 0.5rem;
     font-weight: 700;
+    -webkit-text-fill-color: #cb9dff;
 }
 
 .course-title:after {
@@ -259,7 +262,7 @@
     transform: translateX(-50%);
     width: 100px;
     height: 3px;
-    background: #CD9CFF;
+    background: linear-gradient(to right, #8a4cbf, #CD9CFF);
     border-radius: 3px;
 }
 
@@ -276,18 +279,40 @@
     gap: 0.5rem;
     color: #e5e0ff;
     font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px);
+    padding: 8px 15px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.course-meta span:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .course-meta i {
-    color: #cb9dff;
+    color: #bb99ff;
 }
 
 .main_image {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.03);
     padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: all 0.4s ease;
+    animation: fadeIn 1s ease-out;
+}
+
+.main_image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 .course-thumbnail {
@@ -298,22 +323,54 @@
     object-fit: cover;
     margin: 0 auto;
     display: block;
-    border-radius: 8px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .content_wrapper {
     margin-top: 50px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     max-width: 100%;
+    animation: fadeIn 1.2s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.content_wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #8a4cbf, #CD9CFF);
 }
 
 .content_wrapper .title {
     color: #2c3e50;
     font-weight: 700;
     margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.content_wrapper .title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #CD9CFF;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.content_wrapper .title:hover::after {
+    width: 100%;
 }
 
 .content_wrapper .content {
@@ -337,57 +394,17 @@
     font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
 }
 
-.course-outline {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.outline-item {
-    background: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid #e9ecef;
-}
-
-.outline-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.outline-item i {
-    font-size: 2.5rem;
-    color: #0d6efd;
-    margin-bottom: 15px;
-}
-
-.outline-item h5 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: #2c3e50;
-    font-weight: 600;
-}
-
-.outline-item p {
-    color: #6c757d;
-    margin: 0;
-    font-size: 1rem;
-}
-
 .fixed-bottom-section {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(15, 8, 26, 0.95);
-    padding: 20px 0;
+    background: rgba(26, 16, 60, 0.95);
+    padding: 15px 0;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
     z-index: 1000;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
 }
 
 .price-info {
@@ -397,9 +414,10 @@
 
 .price-info .label {
     font-size: 0.9rem;
-    color: #e5e0ff;
+    color: #bb99ff;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-weight: 600;
 }
 
 .price-info .price {
@@ -407,6 +425,20 @@
     font-weight: 700;
     color: #CD9CFF;
     margin: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.price-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.original-price {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    font-weight: 500;
 }
 
 .enrollment-info {
@@ -419,10 +451,23 @@
     align-items: center;
     gap: 10px;
     color: #e5e0ff;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .info-item i {
-    color: #cb9dff;
+    color: #bb99ff;
+    font-size: 1.2rem;
 }
 
 .enroll-btn {
@@ -430,20 +475,20 @@
     padding: 15px 30px;
     border: none;
     border-radius: 50px;
-    background: #CD9CFF;
+    background: linear-gradient(45deg, #8a4cbf, #CD9CFF);
     color: #fff;
     font-weight: 600;
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 8px 20px rgba(183, 109, 212, 0.5);
+    box-shadow: 0 8px 20px rgba(138, 76, 191, 0.5);
     position: relative;
     overflow: hidden;
 }
 
 .enroll-btn:hover {
-    background: #d7adff;
-    box-shadow: 0 10px 25px rgba(183, 109, 212, 0.6);
+    background: linear-gradient(45deg, #9b59b6, #d7adff);
+    box-shadow: 0 10px 25px rgba(138, 76, 191, 0.6);
     transform: translateY(-2px);
 }
 
@@ -467,7 +512,7 @@
     border: none;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     background-color: #fff;
 }
 
@@ -504,8 +549,9 @@
 .price .amount {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #CD9CFF;
+    color: #8a4cbf;
     margin: 20px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .qr-code {
@@ -516,14 +562,27 @@
     background: white;
     border: 2px solid #e9ecef;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.qr-code:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
 }
 
 .bank-info {
     background-color: #f8f9fa;
-    border-left: 4px solid #CD9CFF;
+    border-left: 4px solid #8a4cbf;
     border-radius: 10px;
     padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.bank-info:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
 }
 
 .bank-info ul li {
@@ -537,16 +596,17 @@
 }
 
 .bank-info ul li .fw-bold.text-primary {
-    color: #CD9CFF !important;
+    color: #8a4cbf !important;
 }
 
 .alert-info {
-    background-color: rgba(205, 156, 255, 0.1);
+    background-color: rgba(187, 153, 255, 0.1);
     border: none;
     color: #8a4cbf;
     border-radius: 10px;
     padding: 15px 20px;
     margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .form-label {
@@ -565,8 +625,8 @@
 }
 
 .form-control:focus {
-    border-color: #CD9CFF;
-    box-shadow: 0 0 0 0.25rem rgba(205, 156, 255, 0.15);
+    border-color: #bb99ff;
+    box-shadow: 0 0 0 0.25rem rgba(187, 153, 255, 0.15);
 }
 
 .btn {
@@ -579,14 +639,14 @@
 }
 
 .btn-primary {
-    background-color: #CD9CFF !important;
+    background: linear-gradient(45deg, #8a4cbf, #CD9CFF) !important;
     border-color: #8a4cbf !important;
     color: #fff !important;
     font-weight: 600 !important;
     padding: 13px 40px !important;
     border-radius: 50px !important;
     font-size: 16px !important;
-    box-shadow: 0 8px 20px rgba(183, 109, 212, 0.5) !important;
+    box-shadow: 0 8px 20px rgba(138, 76, 191, 0.5) !important;
     position: relative;
     overflow: hidden;
     text-transform: uppercase;
@@ -594,10 +654,10 @@
 }
 
 .btn-primary:hover {
-    background-color: #d7adff !important;
+    background: linear-gradient(45deg, #9b59b6, #d7adff) !important;
     border-color: #8a4cbf !important;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(183, 109, 212, 0.6) !important;
+    box-shadow: 0 10px 25px rgba(138, 76, 191, 0.6) !important;
 }
 
 .btn-primary::before {
@@ -633,86 +693,6 @@
     box-shadow: 0 10px 25px rgba(108, 117, 125, 0.4) !important;
 }
 
-.form-control[type="tel"] {
-    letter-spacing: 1px;
-}
-
-.form-control[type="tel"]::placeholder {
-    letter-spacing: normal;
-}
-
-/* Thêm animation cho các hiệu ứng */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.modal-body > div {
-    animation: fadeIn 0.5s ease-out;
-}
-
-@media (max-width: 768px) {
-    .course-title {
-        font-size: 2.2rem;
-    }
-
-    .course-meta {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .course-thumbnail {
-        max-height: 300px;
-    }
-
-    .main_image {
-        padding: 20px;
-    }
-}
-
-@media (max-width: 576px) {
-    .course-title {
-        font-size: 1.8rem;
-    }
-
-    .course-meta span {
-        font-size: 1rem;
-    }
-
-    .course-thumbnail {
-        max-height: 250px;
-    }
-
-    .main_image {
-        padding: 15px;
-    }
-}
-
-.price-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.original-price {
-    color: #6c757d;
-    font-size: 1.2rem;
-    text-decoration: line-through;
-}
-
-.price {
-    color: #CD9CFF;
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-.amount {
-    color: #CD9CFF;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
 .countdown-container {
     display: flex;
     flex-direction: column;
@@ -743,7 +723,13 @@
     background: #ffffff;
     padding: 8px 5px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
 .countdown-item span:first-child {
@@ -765,14 +751,9 @@
     gap: 2px;
 }
 
-.slots-text {
-    font-weight: 500;
-    color: #2c3e50;
-}
-
 .original-price-small {
     font-size: 0.85rem;
-    color: #6c757d;
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: line-through;
 }
 
@@ -784,8 +765,8 @@
 .lesson-item {
     display: flex;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     margin-bottom: 20px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -794,14 +775,14 @@
 
 .lesson-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .lesson-number {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #CD9CFF;
+    background: linear-gradient(45deg, #8a4cbf, #CD9CFF);
     color: white;
     font-weight: bold;
     font-size: 1.2rem;
@@ -830,7 +811,13 @@
     background: #f8f9fa;
     padding: 15px;
     border-radius: 8px;
-    border-left: 3px solid #CD9CFF;
+    border-left: 3px solid #8a4cbf;
+    transition: all 0.3s ease;
+}
+
+.lesson-objectives:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background: #f3f4f6;
 }
 
 .lesson-objectives strong {
@@ -842,6 +829,70 @@
 .lesson-objectives p {
     margin-bottom: 0;
     font-size: 0.95rem;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animated {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+    .course-title {
+        font-size: 2.2rem;
+    }
+
+    .course-title:before {
+        font-size: 2.2rem;
+    }
+
+    .course-meta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .course-thumbnail {
+        max-height: 300px;
+    }
+
+    .main_image {
+        padding: 15px;
+    }
+
+    .enrollment-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .info-item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .course-title {
+        font-size: 1.8rem;
+    }
+
+    .course-title:before {
+        font-size: 1.8rem;
+    }
+
+    .course-meta span {
+        font-size: 1rem;
+    }
+
+    .course-thumbnail {
+        max-height: 250px;
+    }
+
+    .content_wrapper {
+        padding: 25px;
+    }
 }
 </style>
 

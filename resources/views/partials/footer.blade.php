@@ -177,10 +177,9 @@
                         <p>Nơi Kiến Tạo Tương Lai Cùng Trí Tuệ Nhân Tạo. Chúng tôi cung cấp các khóa học chất lượng cao về AI và tự động hóa.</p>
                     </div>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@aiagentvietnam"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://www.tiktok.com/@mktxcelbot143"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
@@ -199,16 +198,16 @@
                 <div class="single-footer-widget">
                     <h4>Liên hệ</h4>
                     <ul class="footer-contact-info">
-                        <li><a href="#"><i class="fas fa-phone-alt"></i> 0384265999</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> info@khoahocai.pro</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Hà Nội, Việt Nam</a></li>
+                        <li><a href="#"><i class="fas fa-phone-alt"></i> Mr. Đạt – 0384 265 999</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> support@khoahocai.pro</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i>152 Ngõ 207 Đường Xuân Đỉnh - Hà Nội</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row footer_bottom">
             <div class="col-lg-12">
-                <p>© 2023 KhoaHocAI.Pro. Tất cả quyền được bảo lưu.</p>
+                <p>© 2025 KhoaHocAI.Pro. Tất cả quyền được bảo lưu.</p>
             </div>
         </div>
     </div>
@@ -255,6 +254,7 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="{{ asset('assets/js/plugins.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
 
 </body>
 </html>

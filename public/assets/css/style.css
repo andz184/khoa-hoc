@@ -2507,6 +2507,7 @@ ul {
 
 /* line 34, E:/172 Etrain Education/172_Etrain_Education_html/sass/_banner.scss */
 .banner_part .banner_text .banner_text_iner {
+    padding-bottom: 250px;
   display: table-cell;
   vertical-align: middle;
 }

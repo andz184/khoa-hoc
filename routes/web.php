@@ -21,6 +21,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/courses', [HomeController::class, 'course'])->name('course');
     Route::get('/course/{slug}', [HomeController::class, 'courceDetail'])->name('course-detail');
+    Route::get('/landing/{slug}', [HomeController::class, 'courseLanding'])->name('course-landing');
 
     // Route cho hệ thống xác thực
     require __DIR__.'/auth.php';

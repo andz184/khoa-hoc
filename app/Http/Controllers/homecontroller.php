@@ -9,22 +9,22 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Lấy 6 khóa học mới nhất đã được publish
+        // Lấy tất cả khóa học đã publish
         $courses = Course::with('categories')
             ->where('is_published', true)
             ->latest()
-            ->take(6)
             ->get();
 
-        // Lấy thống kê số lượng
-        $stats = [
-            'teachers' => Course::distinct('instructor_name')->count(),
-            'students' => 960, // Có thể thay thế bằng số lượng học viên thực tế sau
-            'online_students' => 1020, // Có thể thay thế bằng số lượng học viên online thực tế sau
-            'offline_students' => 820, // Có thể thay thế bằng số lượng học viên offline thực tế sau
-        ];
+        // Phân chia khóa học thành nhóm để hiển thị
+        $featuredCourses = $courses->take(3); // 3 khóa học nổi bật (mới nhất)
+        $popularCourses = $courses->sortByDesc('students_count')->take(6); // 6 khóa học phổ biến
 
-        return view('client.index', compact('courses', 'stats'));
+        // Lấy tất cả danh mục kèm khóa học
+        $categories = \App\Models\Category::with(['courses' => function($query) {
+            $query->where('is_published', true);
+        }])->where('status', true)->get();
+
+        return view('client.index', compact('featuredCourses', 'popularCourses', 'categories','courses'));
     }
 
     public function course()
@@ -46,6 +46,24 @@ class HomeController extends Controller
             ->firstOrFail();
 
         return view('client.course_details', compact('course'));
+    }
+
+    public function courseLanding($slug)
+    {
+        $course = Course::with(['categories', 'lessons'])
+            ->where('slug', $slug)
+            ->where('is_published', true)
+            ->firstOrFail();
+
+        // Create stats for the landing page
+        $stats = [
+            'teachers' => 1, // For a specific course, typically 1 instructor
+            'students' => $course->students_count ?? rand(50, 100), // Use actual count or placeholder
+            'online_students' => $course->online_students ?? rand(40, 90),
+            'offline_students' => $course->offline_students ?? rand(10, 30),
+        ];
+
+        return view('client.course_landing', compact('course', 'stats'));
     }
 
     public function homeLearn() {
