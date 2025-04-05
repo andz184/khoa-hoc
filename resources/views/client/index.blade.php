@@ -16,6 +16,7 @@
 body {
     background-color: #1a103c;
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236a4c93' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    overflow-x: hidden;
 }
 
 .banner_text_iner h1 {
@@ -39,22 +40,18 @@ body {
 .banner_part {
     position: relative;
     overflow: hidden;
-    padding: 0;
+    padding: 60px 0;
     width: 100%;
     background: none !important;
-}
-
-/* Xóa mọi background image có thể có */
-.banner_part::before,
-.banner_part::after {
-    display: none !important;
-    background: none !important;
-    content: none !important;
 }
 
 .banner_video {
     position: relative;
     z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .banner_video video {
@@ -65,7 +62,9 @@ body {
     height: auto;
     display: block;
     max-width: 100%;
-    padding-bottom: 250px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+
 }
 
 .banner_part .container {
@@ -80,236 +79,12 @@ body {
     width: 100%;
     position: relative;
     z-index: 2;
-}
-
-.banner_text_iner {
-    width: 100%;
-    max-width: 100%;
-}
-
-.banner_text_iner h1,
-.banner_text_iner h5,
-.banner_text_iner p {
-    width: 100%;
-    max-width: 100%;
-    word-wrap: break-word;
-}
-
-@media (max-width: 991px) {
-    .banner_part {
-        padding: 0;
-        width: 100%;
-        background: none !important;
-    }
-    .banner_part .container {
-        padding: 0;
-        width: 100%;
-        max-width: 100%;
-    }
-    .banner_part .row {
-        flex-direction: column-reverse;
-        margin: 0;
-        width: 100%;
-    }
-    .banner_video {
-        margin: 0;
-        padding: 0;
-        margin-top: 60px;
-        width: 100%;
-    }
-    .banner_video video {
-        border-radius: 0;
-        margin: 0;
-        width: 100%;
-    }
-    .banner_text {
-        padding: 20px 15px;
-        text-align: center;
-        width: 100%;
-    }
-    .col-lg-6 {
-        padding: 0;
-        width: 100%;
-    }
-}
-
-/* Ngăn scroll ngang */
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-.course-title {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-weight: 600;
-}
-
-.course-description {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-weight: 400;
-}
-
-.course-price {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-weight: 700;
-}
-
-.course-category {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-weight: 500;
-}
-
-/* Additional Typography Styles */
-h1, h2, h3, h4, h5, h6, p, a, span, li {
-    font-family: 'Be Vietnam Pro', sans-serif;
-}
-
-h1, h2 {
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    color: #2d3436;
-}
-
-h3, h4 {
-    font-weight: 600;
-    color: #2d3436;
-}
-
-h5, h6 {
-    font-weight: 500;
-    color: #2d3436;
-}
-
-p {
-    font-weight: 400;
-    line-height: 1.6;
-    color: #636e72;
-}
-
-.section_tittle h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.section_tittle p {
-    color: #6c5ce7;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Button Styles */
-.btn_1 {
-    display: inline-block;
-    background: #CD9CFF !important;
-    border: 2px solid #b76dd4 !important;
-    color: #ffffff !important;
-    font-weight: 600;
-    padding: 12px 28px;
-    border-radius: 30px;
-    font-size: 15px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(183, 109, 212, 0.4) !important;
-    margin-top: 20px;
-}
-
-.btn_1:hover {
-    background: #352863 !important;
-    color: white !important;
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(125, 75, 170, 0.5) !important;
-}
-
-.btn_1::after {
-    display: none;
-}
-
-/* Feature Section */
-.single_feature_text h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-.single_feature_part h4 {
-    font-size: 18px;
-    margin: 15px 0 8px;
-}
-
-/* Learning Section */
-.learning_member_text h5 {
-    color: #9b59b6 !important;
-    margin-bottom: 10px;
-}
-
-.learning_member_text h2 {
-    margin-bottom: 15px;
-}
-
-.learning_member_text ul li {
-    margin: 8px 0;
-    display: flex;
-    align-items: center;
-}
-
-.learning_member_text ul li span {
-    margin-right: 8px;
-    color: #9b59b6 !important;
-}
-
-/* Giảm padding và margin giữa các section */
-section {
-    padding: 40px 0;
-}
-
-.feature_part {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.learning_part {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.special_cource {
-    padding-top: 20px;
-}
-
-.padding_top {
-    padding-top: 20px;
-}
-
-.section_tittle {
-    margin-bottom: 30px;
-}
-
-.text-emphasis {
-    color: #ffffff;
-    font-weight: 600;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.text-highlight {
-    background: linear-gradient(to right, #e0a2ff, #ffcd4a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 800;
-}
-
-.banner_text_iner h1 .highlight {
-    background: linear-gradient(to right, #e0a2ff, #ffcd4a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 800;
-}
-
-/* Make the banner text pop more */
-.banner_text_iner {
     padding: 30px 0;
+}
+
+.banner_text_iner {
+    width: 100%;
+    max-width: 100%;
 }
 
 .banner_text_iner h5 {
@@ -346,6 +121,33 @@ section {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+.feature_btn {
+    display: inline-block;
+    background: #CD9CFF !important;
+    border: 2px solid #b76dd4 !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(183, 109, 212, 0.4) !important;
+    margin-top: 10px;
+}
+
+.feature_btn:hover {
+    background: #352863 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(125, 75, 170, 0.5) !important;
+}
+
+.feature_btn::after {
+    display: none;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -356,81 +158,13 @@ section {
         transform: translateY(0);
     }
 }
-</style>
-<section class="banner_part">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="banner_text">
-                    <div class="banner_text_iner">
-                        <h5>Biến đam mê công nghệ thành kỹ năng thực tiễn</h5>
-                        <h1>Xây dựng AI tự động hoá <span class="highlight">từ Cơ bản đến Nâng cao</span></h1>
-                        <p>Trong khóa học này, anh/chị không chỉ được học về cách <span class="text-emphasis">ứng dụng AI vào thực tế</span>, mà còn học về
-                            <span class="text-emphasis">tự động hoá</span> và kết nối 2 công nghệ mạnh mẽ nhất với nhau để xây dựng các <span class="text-emphasis">Hệ thống AI
-                            Automation</span> <span class="text-highlight">VƯỢT XA SỨC TƯỞNG TƯỢNG</span> của nhiều người.</p>
-                            <a href="{{ route('course') }}" class="feature_btn">Xem Tất Cả Khóa Học</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="banner_video">
-                    <video autoplay loop muted playsinline>
-                        <source src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-stage/assets/ai_hero_v2_vp9_82cf7a8e6a.webm" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- banner part start-->
 
-<!-- feature_part start-->
-<section class="feature_part">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-xl-3 align-self-center">
-                <div class="feature_text_area">
-                    <div class="section_tittle">
-                        <h2>Tại sao chọn<br> <span class="text_highlight">KhoaHocAI.Pro?</span></h2>
-                    </div>
-                    <p>Khoá học được xây dựng bởi các chuyên gia có cả năng lực về ứng dụng và xây dựng các sản phẩm AI.</p>
-                    <a href="{{ route('course') }}" class="feature_btn">Xem Tất Cả Khóa Học</a>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="feature_card">
-                    <div class="feature_icon_wrapper">
-                    </div>
-                   <img src="{{asset('assets/img/anh169.png')}}" alt="">
-                </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="feature_card">
-                    <div class="feature_icon_wrapper">
-
-                    </div>
-                    <img src="{{asset('assets/img/anh168.png')}}" alt="">
-                </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="feature_card">
-                    <div class="feature_icon_wrapper">
-
-                    </div>
-                    <img src="{{asset('assets/img/anh167.png')}}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
+/* Feature Cards Styling */
 .feature_part {
     background-color: #1a103c;
-
     position: relative;
     overflow: hidden;
+    padding: 80px 0;
 }
 
 .feature_text_area {
@@ -445,15 +179,20 @@ section {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     position: relative;
     display: inline-block;
+    color: #ffffff;
 }
 
 .feature_text_area .text_highlight {
-    color: #b76dd4;
-    background: linear-gradient(to right, #e0a2ff, #ffcd4a);
+    background-image: linear-gradient(to right, #e0a2ff, #ffcd4a);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    color: #b76dd4;
+    display: inline-block;
     font-weight: 800;
+    position: relative;
+    padding: 0;
 }
 
 .feature_text_area h2::after {
@@ -463,7 +202,7 @@ section {
     bottom: -10px;
     height: 3px;
     width: 60%;
-    background: #b76dd4;
+    background: linear-gradient(to right, #e0a2ff, #ffcd4a);
     border-radius: 2px;
     transition: width 0.3s ease;
 }
@@ -479,188 +218,103 @@ section {
     margin-bottom: 25px;
 }
 
-.feature_btn, .contact_button {
-    display: inline-block;
-    background: #2c2152 !important;
-    border: 2px solid #7d4baa !important;
-    color: #ffffff !important;
-    font-weight: 600;
-    padding: 12px 28px;
-    border-radius: 30px;
-    font-size: 15px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(125, 75, 170, 0.3) !important;
-    margin-top: 20px;
-}
-
-.feature_btn:hover, .contact_button:hover {
-    background: #352863 !important;
-    color: white !important;
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(125, 75, 170, 0.5) !important;
-    text-decoration: none;
-}
-
 .feature_card {
     background-color: #ffffff;
     border-radius: 16px;
-    padding: 10px;
+    padding: 25px 20px;
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100%;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(231, 221, 255, 0.1);
+}
+
+.feature_card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: linear-gradient(to bottom, #e0a2ff, #ffcd4a);
+    transition: height 0.4s ease;
+}
+
+.feature_card:hover::before {
+    height: 100%;
 }
 
 .feature_card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(155, 89, 182, 0.2);
+}
+
+.feature_icon_wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.feature_icon {
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .feature_card img {
     width: 100%;
     height: auto;
-    max-width: 280px;
+    max-width: 200px;
     display: block;
     margin: 0 auto;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .feature_card:hover img {
-    transform: scale(1.05);
-}
-
-.feature_icon_wrapper {
-    margin-bottom: 20px;
-}
-
-.feature_icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #f1eeff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: #b76dd4;
-    margin-bottom: 5px;
+    transform: scale(1.08);
 }
 
 .feature_title {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     color: #1a103c;
-    margin-bottom: 15px;
+    margin: 15px 0;
+    text-align: center;
+    transition: color 0.3s ease;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.feature_card:hover .feature_title {
+    color: #9b59b6;
+    background: linear-gradient(to right, #e0a2ff, #ffcd4a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .feature_description {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
-    color: #636e72;
-    margin-bottom: 0;
-    flex-grow: 1;
+    color: #636e72 !important;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 400;
+    font-family: 'Be Vietnam Pro', sans-serif;
 }
 
-@media (max-width: 991px) {
-    .feature_part {
-        padding: 60px 0;
-    }
-
-    .feature_text_area {
-        text-align: center;
-        padding-right: 0;
-        margin-bottom: 40px;
-    }
-
-    .feature_btn {
-        margin: 0 auto;
-        display: block;
-        max-width: 220px;
-    }
-}
-</style>
-<!-- feature_part end-->
-
-<!-- upcoming_event part start-->
-
-<!-- learning part start-->
-<section class="about_section">
-    <div class="about_container">
-        <div class="about_card">
-            <div class="about_illustration">
-                <div class="editor_illustration">
-                    <div class="page_outline"></div>
-                    <div class="dash_border"></div>
-                    <div class="editor_window">
-                        <div class="list_item">
-                            <div class="check_icon"><i class="ti-check"></i></div>
-                            <div class="line"></div>
-                        </div>
-                        <div class="list_item">
-                            <div class="check_icon"><i class="ti-check"></i></div>
-                            <div class="line"></div>
-                        </div>
-                    </div>
-                    <div class="chat_bubble"><i class="ti-comment"></i></div>
-                    <div class="green_checkmark"><i class="ti-check"></i></div>
-                    <div class="circle_element"></div>
-                    <div class="dotted_line horizontal"></div>
-                    <div class="dotted_line vertical"></div>
-                </div>
-            </div>
-            <div class="about_content">
-                <div class="section_tittle">
-                    <h2><span class="text_highlight">Nơi Kiến Tạo Tương Lai</span> Cùng <span class="text_highlight">Trí Tuệ Nhân Tạo</span></h2>
-                </div>
-
-                <p class="about_description">Tại KhoaHocAI.Pro, chúng tôi tự hào mang đến các khóa học AI được xây dựng bởi đội ngũ chuyên gia hàng đầu, những người không chỉ sở hữu năng lực vượt trội trong việc ứng dụng AI.</p>
-
-                <p class="about_description">Chúng tôi cam kết cung cấp nội dung cập nhật mới nhất, giúp bạn nắm bắt cách ứng dụng công nghệ AI tiên tiến và tự tay xây dựng các AI Agent từ con số 0.</p>
-
-                <a href="{{ route('course') }}" class="feature_btn">Xem Tất Cả Khóa Học</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-/* Modern About Section with Card Layout */
+/* About Section Styling */
 .about_section {
     background-color: #1a103c;
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%236a4c93' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
     padding: 80px 0;
     position: relative;
     overflow: hidden;
-}
-
-.about_section::before {
-    content: '';
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(26, 16, 60, 0) 70%);
-    top: -400px;
-    right: -400px;
-    z-index: 0;
-}
-
-.about_section::after {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(26, 16, 60, 0) 70%);
-    bottom: -300px;
-    left: -300px;
-    z-index: 0;
 }
 
 .about_container {
@@ -691,143 +345,6 @@ section {
     background-color: #f1eeff;
 }
 
-.editor_illustration {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.page_outline {
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    border: 2px dashed #9b59b6;
-    border-radius: 15px;
-    opacity: 0.3;
-    left: 0;
-    top: 10%;
-}
-
-.dash_border {
-    position: absolute;
-    width: 90%;
-    height: 90%;
-    border: 2px dashed #9b59b6;
-    border-radius: 15px;
-    opacity: 0.1;
-    right: 0;
-    bottom: 0;
-}
-
-.editor_window {
-    position: absolute;
-    width: 70%;
-    height: 60%;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    top: 20%;
-    left: 15%;
-    overflow: hidden;
-    padding: 20px;
-}
-
-.list_item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.check_icon {
-    width: 24px;
-    height: 24px;
-    background-color: #b76dd4;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 12px;
-    margin-right: 10px;
-}
-
-.line {
-    height: 10px;
-    background-color: #e0e0ff;
-    flex-grow: 1;
-    border-radius: 5px;
-}
-
-.chat_bubble {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    background-color: #b76dd4;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 16px;
-    bottom: 20%;
-    left: 10%;
-    box-shadow: 0 5px 15px rgba(183, 109, 212, 0.4);
-}
-
-.green_checkmark {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    background-color: #8bc34a;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 16px;
-    top: 15%;
-    right: 10%;
-    box-shadow: 0 5px 15px rgba(139, 195, 74, 0.3);
-}
-
-.circle_element {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border: 2px solid #b76dd4;
-    border-radius: 50%;
-    opacity: 0.7;
-    bottom: 30%;
-    right: 20%;
-}
-
-.dotted_line {
-    position: absolute;
-    background-image: linear-gradient(to right, #b76dd4 50%, rgba(255, 255, 255, 0) 0%);
-    background-position: top;
-    background-size: 8px 2px;
-    background-repeat: repeat-x;
-    opacity: 0.4;
-}
-
-.dotted_line.horizontal {
-    width: 100px;
-    height: 2px;
-    top: 50%;
-    right: 5%;
-}
-
-.dotted_line.vertical {
-    width: 2px;
-    height: 100px;
-    background-image: linear-gradient(to bottom, #b76dd4 50%, rgba(255, 255, 255, 0) 0%);
-    background-position: center;
-    background-size: 2px 8px;
-    right: 25%;
-    top: 30%;
-    opacity: 0.6;
-}
-
 .about_content {
     flex: 0 0 50%;
     padding: 60px 50px;
@@ -836,7 +353,7 @@ section {
     justify-content: center;
 }
 
-.about_title {
+.about_content .section_tittle h2 {
     font-size: 32px;
     font-weight: 700;
     color: #2d3436;
@@ -844,12 +361,17 @@ section {
     line-height: 1.3;
 }
 
-.text_highlight {
-    background: linear-gradient(to right, #e0a2ff, #ffcd4a);
+.about_content .text_highlight {
+    background-image: linear-gradient(to right, #e0a2ff, #ffcd4a);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    color: #b76dd4;
+    display: inline-block;
     font-weight: 800;
+    position: relative;
+    padding: 0;
 }
 
 .about_description {
@@ -859,66 +381,7 @@ section {
     margin-bottom: 20px;
 }
 
-.contact_button {
-    display: inline-block;
-    background: #2c2152;
-    border: 2px solid #7d4baa;
-    color: #ffffff;
-    font-weight: 600;
-    padding: 12px 28px;
-    border-radius: 30px;
-    font-size: 15px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(125, 75, 170, 0.3);
-    margin-top: 20px;
-}
-
-.contact_button:hover {
-    background: #352863;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(125, 75, 170, 0.5);
-    text-decoration: none;
-}
-
-@media (max-width: 991px) {
-    .about_section {
-        padding: 60px 15px;
-    }
-
-    .about_card {
-        flex-direction: column;
-    }
-
-    .about_illustration, .about_content {
-        flex: 0 0 100%;
-    }
-
-    .about_illustration {
-        height: 300px;
-        order: 1;
-    }
-
-    .about_content {
-        padding: 40px 30px;
-        order: 2;
-    }
-
-    .about_title {
-        font-size: 28px;
-    }
-}
-</style>
-<!-- learning part end-->
-
-
-<!-- member_counter counter end -->
-
-<!--::review_part start::-->
-<style>
-/* Modern Card Effects and Animations */
+/* Course Card Styling */
 .course-card {
     background: #fff;
     border-radius: 15px;
@@ -927,6 +390,9 @@ section {
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     margin-bottom: 25px;
     border: 1px solid rgba(0,0,0,0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .course-card:hover {
@@ -938,22 +404,6 @@ section {
     position: relative;
     overflow: hidden;
     height: 200px;
-}
-
-.course-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.course-card:hover .course-image::after {
-    opacity: 1;
 }
 
 .course-image img {
@@ -983,13 +433,11 @@ section {
     transition: all 0.3s ease;
 }
 
-.course-card:hover .course-category {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3) !important;
-}
-
 .course-content {
     padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .course-title {
@@ -1022,6 +470,7 @@ section {
     overflow: hidden;
     height: auto;
     max-height: 42px;
+    flex-grow: 1;
 }
 
 .course-price {
@@ -1044,148 +493,13 @@ section {
     text-decoration: line-through;
 }
 
-
 .course-meta {
     margin-top: 12px;
     padding-top: 12px;
     border-top: 1px solid rgba(0,0,0,0.06);
 }
 
-.instructor {
-    display: flex;
-    align-items: center;
-}
-
-.instructor-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.instructor-info .instructor-label {
-    font-size: 12px;
-    color: #636e72;
-    margin-bottom: 2px;
-}
-
-.instructor-info .instructor-name {
-    font-size: 13px;
-    font-weight: 600;
-    color: #2d3436;
-}
-
-.rating {
-    display: flex;
-    align-items: center;
-    background: rgba(155, 89, 182, 0.08) !important;
-    padding: 3px 10px;
-    border-radius: 15px;
-}
-
-.rating .rating-score {
-    font-size: 13px;
-    font-weight: 600;
-    color: #9b59b6 !important;
-    margin-left: 3px;
-}
-
-/* Feature Section Enhancement */
-.single_feature {
-    padding: 25px;
-    border-radius: 15px;
-    background: #fff;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid rgba(0,0,0,0.05);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.single_feature:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(108,92,231,0.1);
-}
-
-.single_feature_part {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.single_feature_part h4 {
-    font-size: 18px;
-    margin: 15px 0 10px;
-    flex-grow: 0;
-}
-
-.single_feature_part p {
-    margin: 0;
-    flex-grow: 1;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.single_feature_icon {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(155, 89, 182, 0.1) !important;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.single_feature:hover .single_feature_icon {
-    background: #9b59b6 !important;
-    color: white;
-    transform: scale(1.08);
-}
-
-/* Button Enhancement */
-.btn_1 {
-    padding: 10px 25px;
-    border-radius: 25px;
-    background: #b76dd4 !important;
-    color: white !important;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    border: 2px solid #b76dd4 !important;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(183, 109, 212, 0.3);
-}
-
-.btn_1:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(183, 109, 212, 0.4) !important;
-    background: #c686e0 !important;
-}
-
-.btn_1::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120%;
-    height: 0;
-    padding-bottom: 120%;
-    background: rgba(255,255,255,0.1);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    transition: transform 0.6s, opacity 0.3s;
-}
-
-.btn_1:hover::after {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-}
-
-/* Section Title Enhancement */
+/* Section Title Styling */
 .section_tittle {
     margin-bottom: 30px;
     position: relative;
@@ -1196,26 +510,8 @@ section {
     font-weight: 700;
     margin-bottom: 20px;
     position: relative;
-    color: #ffffff;
     line-height: 1.3;
     display: inline-block;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.section_tittle h2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    height: 3px;
-    width: 60%;
-    background: #b76dd4;
-    border-radius: 2px;
-    transition: width 0.3s ease;
-}
-
-.section_tittle:hover h2::after {
-    width: 100%;
 }
 
 .section_tittle p {
@@ -1227,98 +523,650 @@ section {
     margin-bottom: 8px;
 }
 
-/* Banner Enhancement */
-.banner_part {
-    padding: 50px 0;
-    position: relative;
-    overflow: hidden;
+/* Responsive Adjustments */
+@media (max-width: 1199px) {
+    .banner_text_iner h1 {
+        font-size: 36px;
+    }
+
+    .feature_text_area h2,
+    .about_content .section_tittle h2,
+    .section_tittle h2 {
+        font-size: 28px;
+    }
+
+    .about_card {
+        min-height: 350px;
+    }
+
+    .about_content {
+        padding: 40px 30px;
+    }
 }
 
-.banner_text {
+@media (max-width: 991px) {
+    .banner_part {
+        padding: 40px 0;
+    }
+
+    .banner_part .row {
+        flex-direction: column-reverse;
+    }
+
+    .banner_text {
+        text-align: center;
+        padding: 30px 15px;
+    }
+
+    .banner_text_iner h1 {
+        font-size: 32px;
+    }
+
+    .banner_video {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .banner_video video {
+        max-width: 100%;
+        margin: 0 auto;
+        margin-bottom: 0;
+    }
+
+    .feature_text_area {
+        text-align: center;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .feature_text_area h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .feature_btn {
+        margin: 10px auto 30px;
+        display: inline-block;
+        max-width: 220px;
+    }
+
+    .about_card {
+        flex-direction: column;
+    }
+
+    .about_illustration,
+    .about_content {
+        flex: 0 0 100%;
+    }
+
+    .about_illustration {
+        height: 250px;
+        order: 1;
+    }
+
+    .about_content {
+        padding: 30px 25px;
+        order: 2;
+        text-align: center;
+    }
+
+    .about_content .section_tittle h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 767px) {
+    .banner_text_iner h1 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .banner_text_iner p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .feature_text_area h2,
+    .about_content .section_tittle h2,
+    .section_tittle h2 {
+        font-size: 24px;
+    }
+
+    .course-card {
+        max-width: 400px;
+        margin: 0 auto 25px;
+    }
+
+    .course-image {
+        height: 180px;
+    }
+
+    .course-content {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 575px) {
+    .banner_part {
+        padding: 25px 0;
+    }
+
+    .banner_text_iner h5 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .banner_text_iner h1 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .banner_text_iner p {
+        margin-bottom: 15px;
+    }
+
+    .feature_text_area h2,
+    .about_content .section_tittle h2,
+    .section_tittle h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .feature_card {
+        margin-bottom: 25px;
+        padding: 20px 15px;
+    }
+
+    .about_section {
+        padding: 40px 0;
+    }
+
+    .about_card {
+        min-height: auto;
+    }
+
+    .about_illustration {
+        height: 180px;
+    }
+
+    .about_content {
+        padding: 25px 20px;
+    }
+
+    .about_description {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .course-title {
+        font-size: 16px;
+    }
+
+    .course-description {
+        font-size: 13px;
+        margin: 8px 0;
+    }
+
+    .course-price {
+        margin-bottom: 8px;
+    }
+
+    .special_cource.padding_top {
+        padding-top: 40px;
+    }
+
+    .section_tittle {
+        margin-bottom: 25px;
+    }
+}
+
+/* Additional small screen improvements */
+@media (max-width: 400px) {
+    /* Improve smallest screen sizes */
+    .banner_text_iner h1 {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    .banner_text_iner h5 {
+        font-size: 13px;
+    }
+
+    .banner_text_iner p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .feature_btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    /* Better two-column layout for extra small screens */
+    .col-6.col-md-6.col-lg-3 {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .feature_card {
+        padding: 15px 10px;
+    }
+
+    .feature_title {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    .feature_description {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    /* Better about section on smallest screens */
+    .about_content {
+        padding: 20px 15px;
+    }
+
+    .about_content .section_tittle h2 {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    /* Course cards for smallest screens */
+    .card-title.fw-bold {
+        font-size: 16px !important;
+    }
+
+    .card-text.small {
+        font-size: 12px !important;
+    }
+}
+
+/* Responsive image heights for course cards */
+@media (max-width: 767px) {
+    .card-img-top {
+        height: 160px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-img-top {
+        height: 140px !important;
+    }
+}
+
+/* Ensure space above sections */
+.special_cource.padding_top {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+/* Ensure container is always centered */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Make sure rows have proper spacing */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/* Ensure all columns have proper padding */
+[class*="col-"] {
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+}
+
+/* Fix h1 text breaking on small screens */
+@media (max-width: 480px) {
+    .banner_text_iner h1 {
+        font-size: 22px;
+        word-break: normal;
+        overflow-wrap: break-word;
+    }
+
+    .feature_card img {
+        max-width: 150px;
+    }
+
+    .course-card {
+        max-width: 100%;
+    }
+
+    .course-image {
+        height: 160px;
+    }
+}
+
+/* Cải thiện hiệu ứng gradient text */
+.text_highlight, .feature_text_area .text_highlight, .about_content .text_highlight {
+    background-image: linear-gradient(to right, #e0a2ff, #ffcd4a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    color: #b76dd4; /* Fallback color */
+    display: inline-block;
+    font-weight: 800;
     position: relative;
+    padding: 0;
+}
+
+/* Fix cho Safari và iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .text_highlight, .feature_text_area .text_highlight, .about_content .text_highlight {
+        background-image: linear-gradient(to right, #e0a2ff, #ffcd4a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+/* Fallback cho các trình duyệt không hỗ trợ gradient */
+@supports not (background-clip: text) {
+    .text_highlight, .feature_text_area .text_highlight, .about_content .text_highlight {
+        color: #b76dd4;
+        background: none;
+    }
+}
+
+/* CSS cho editor_illustration */
+.editor_illustration {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.page_outline {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border: 2px dashed #e0a2ff;
+    border-radius: 10px;
+    opacity: 0.8;
     z-index: 1;
 }
 
-.banner_text_iner h5 {
-    color: #cb9dff !important;
-    font-weight: 600;
-    letter-spacing: 1px;
+.dash_border {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    border: 2px solid #ffcd4a;
+    border-radius: 10px;
+    z-index: 0;
+}
+
+.editor_window {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    width: 70%;
+    height: 60%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    padding: 15px;
+    z-index: 2;
+}
+
+.list_item {
+    display: flex;
+    align-items: center;
     margin-bottom: 15px;
-    animation: fadeInUp 0.6s ease;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    font-size: 16px;
 }
 
-.banner_text_iner h1 {
-    font-size: 42px;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    animation: fadeInUp 0.8s ease;
-    color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(to right, #ffffff, #dfbcff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.check_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: #e0a2ff;
+    color: white;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
-.banner_text_iner p {
-    font-size: 16px;
-    line-height: 1.7;
-    color: #e5e0ff;
-    margin-bottom: 25px;
-    animation: fadeInUp 1s ease;
-    font-weight: 500;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+.line {
+    height: 8px;
+    background: #f0f0f0;
+    flex-grow: 1;
+    border-radius: 4px;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+.chat_bubble {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: 40px;
+    height: 40px;
+    background: #ffcd4a;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 5px 15px rgba(255,205,74,0.3);
+    animation: float 3s ease-in-out infinite;
+}
+
+.green_checkmark {
+    position: absolute;
+    bottom: 20%;
+    right: 20%;
+    width: 30px;
+    height: 30px;
+    background: #4cd964;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 5px 15px rgba(76,217,100,0.3);
+    animation: float 4s ease-in-out infinite;
+}
+
+.circle_element {
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #e0a2ff;
+    border-radius: 50%;
+    z-index: 3;
+    animation: float 5s ease-in-out infinite;
+}
+
+.dotted_line {
+    position: absolute;
+    background: linear-gradient(to right, #e0a2ff 50%, transparent 50%);
+    background-size: 10px 2px;
+    background-repeat: repeat-x;
+    z-index: 1;
+}
+
+.dotted_line.horizontal {
+    height: 2px;
+    width: 100px;
+    top: 60%;
+    left: 40%;
+    animation: float 4s ease-in-out infinite;
+}
+
+.dotted_line.vertical {
+    width: 2px;
+    height: 100px;
+    top: 40%;
+    left: 80%;
+    background: linear-gradient(to bottom, #e0a2ff 50%, transparent 50%);
+    background-size: 2px 10px;
+    background-repeat: repeat-y;
+    animation: float 3.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
     }
-    to {
-        opacity: 1;
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
         transform: translateY(0);
     }
 }
-
-.feature_part .row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.feature_part .col-sm-6 {
-    margin-bottom: 25px;
-    display: flex;
-}
-
-.single_feature_text {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.single_feature_text h2 {
-    margin-bottom: 15px;
-}
-
-.single_feature_text p {
-    margin-bottom: 20px;
-}
-
-.single_feature_text .btn_1 {
-    align-self: flex-start;
-    margin-top: auto;
-}
-
-/* Giảm khoảng cách giữa các row */
-.row {
-    margin-bottom: 15px;
-}
 </style>
+<section class="banner_part">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="banner_text">
+                    <div class="banner_text_iner">
+                        <h5 class="mb-2 mb-md-3">Biến đam mê công nghệ thành kỹ năng thực tiễn</h5>
+                        <h1 class="mb-2 mb-md-3">Xây dựng AI tự động hoá <span class="highlight">từ Cơ bản đến Nâng cao</span></h1>
+                        <p class="mb-3 mb-md-4">Trong khóa học này, anh/chị không chỉ được học về cách <span class="text-emphasis">ứng dụng AI vào thực tế</span>, mà còn học về
+                            <span class="text-emphasis">tự động hoá</span> và kết nối 2 công nghệ mạnh mẽ nhất với nhau để xây dựng các <span class="text-emphasis">Hệ thống AI
+                            Automation</span> <span class="text-highlight">VƯỢT XA SỨC TƯỞNG TƯỢNG</span> của nhiều người.</p>
+                        <a href="{{ route('course') }}" class="feature_btn d-inline-block">Xem Tất Cả Khóa Học</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <div class="banner_video">
+                    <div class="rounded overflow-hidden shadow">
+                        <video autoplay loop muted playsinline class="w-100">
+                            <source src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-stage/assets/ai_hero_v2_vp9_82cf7a8e6a.webm" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner part start-->
+
+<!-- feature_part start-->
+<section class="feature_part py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-3 mb-4">
+                <div class="feature_text_area text-center text-lg-start">
+                    <div class="section_tittle">
+                        <h2 class="mb-3">Tại sao chọn <span class="text_highlight">KhoaHocAI.Pro?</span></h2>
+                    </div>
+                    <p class="mb-3 mb-md-4">Khoá học được xây dựng bởi các chuyên gia có cả năng lực về ứng dụng và xây dựng các sản phẩm AI.</p>
+                    <a href="{{ route('course') }}" class="feature_btn d-inline-block">Xem Tất Cả Khóa Học</a>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-4">
+                <div class="feature_card h-100">
+                    <div class="feature_icon_wrapper">
+                        <div class="feature_icon">
+                            <img src="{{asset('assets/img/anh169.png')}}" alt="Cho người mới" class="img-fluid" style="max-width: 180px;">
+                        </div>
+                        <h4 class="feature_title">Cho người mới bắt đầu</h4>
+                        <p class="feature_description">Phù hợp cho người mới bắt đầu lẫn chuyên gia muốn nâng cao kỹ năng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-4">
+                <div class="feature_card h-100">
+                    <div class="feature_icon_wrapper">
+                        <div class="feature_icon">
+                            <img src="{{asset('assets/img/anh168.png')}}" alt="Chuyên gia nâng cao" class="img-fluid" style="max-width: 180px;">
+                        </div>
+                        <h4 class="feature_title">Nâng cao kỹ năng AI</h4>
+                        <p class="feature_description">Kiến thức chuyên sâu giúp chuyên gia nâng cao khả năng tạo ứng dụng AI chất lượng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-3 mb-4">
+                <div class="feature_card h-100">
+                    <div class="feature_icon_wrapper">
+                        <div class="feature_icon">
+                            <img src="{{asset('assets/img/anh167.png')}}" alt="Hỗ trợ" class="img-fluid" style="max-width: 180px;">
+                        </div>
+                        <h4 class="feature_title">Hỗ trợ toàn diện</h4>
+                        <p class="feature_description">Đội ngũ giảng viên luôn sẵn sàng giải đáp thắc mắc và hỗ trợ kể cả trong thời gian học và sau khi hoàn thành khóa học.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- feature_part end-->
+
+<!-- learning part with responsive improvements -->
+<section class="about_section py-5">
+    <div class="container">
+        <div class="about_card">
+            <div class="row g-0">
+                <div class="col-md-5 p-0">
+                    <div class="about_illustration h-100 d-flex align-items-center justify-content-center">
+                        <div class="editor_illustration">
+                            <div class="page_outline"></div>
+                            <div class="dash_border"></div>
+                            <div class="editor_window">
+                                <div class="list_item">
+                                    <div class="check_icon"><i class="fas fa-check"></i></div>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="list_item">
+                                    <div class="check_icon"><i class="fas fa-check"></i></div>
+                                    <div class="line"></div>
+                                </div>
+                            </div>
+                            <div class="chat_bubble"><i class="fas fa-comment"></i></div>
+                            <div class="green_checkmark"><i class="fas fa-check"></i></div>
+                            <div class="circle_element"></div>
+                            <div class="dotted_line horizontal"></div>
+                            <div class="dotted_line vertical"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 p-0">
+                    <div class="about_content h-100">
+                        <div class="section_tittle mb-3">
+                            <h2 class="mb-3">
+                                <span class="text_highlight">Nơi Kiến Tạo Tương Lai</span>
+                                Cùng
+                                <span class="text_highlight">Trí Tuệ Nhân Tạo</span>
+                            </h2>
+                        </div>
+                        <p class="about_description">Tại KhoaHocAI.Pro, chúng tôi tự hào mang đến các khóa học AI được xây dựng bởi đội ngũ chuyên gia hàng đầu, những người không chỉ sở hữu năng lực vượt trội trong việc ứng dụng AI.</p>
+                        <p class="about_description mb-4">Chúng tôi cam kết cung cấp nội dung cập nhật mới nhất, giúp bạn nắm bắt cách ứng dụng công nghệ AI tiên tiến và tự tay xây dựng các AI Agent từ con số 0.</p>
+                        <a href="{{ route('course') }}" class="feature_btn d-inline-block">Xem Tất Cả Khóa Học</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="special_cource padding_top">
     <div class="container">
@@ -1356,8 +1204,6 @@ section {
                             @endif
                         </div>
                         <div class="course-meta">
-
-
                         </div>
                     </div>
                 </div>
@@ -1366,8 +1212,5 @@ section {
         </div>
     </div>
 </section>
-<!--::blog_part end::-->
-
-
 
 @endsection
