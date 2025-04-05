@@ -695,7 +695,7 @@ body {
 .bank-info ul li {
     padding: 12px 0;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.8);
+    color: black;
 }
 
 .bank-info ul li:last-child {
@@ -3280,6 +3280,199 @@ body {
     position: relative;
     z-index: 1;
 }
+
+@media (max-width: 767px) {
+    body {
+        min-width: 320px;
+        max-width: 100%;
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin: 0 auto;
+    }
+
+    .course_details_area {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .course-header {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .main_image {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .content_wrapper {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .lesson-item {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .bottom-enrollment-section {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .enrollment-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .enrollment-card-inner {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .enrollment-card-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .price-info,
+    .countdown-info {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .modal-dialog {
+        width: 95%;
+        max-width: 95%;
+        margin: 10px auto;
+    }
+
+    .modal-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .modal-body {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    #registrationForm,
+    #paymentInfo {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .form-control {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .qr-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .qr-code {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .bank-info {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Fix for horizontal scrolling caused by particles */
+    #particles-js {
+        width: 100vw;
+        max-width: 100vw;
+        overflow-x: hidden;
+        left: 0;
+        right: 0;
+    }
+
+    /* Ensure all flex containers don't cause overflow */
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    [class*="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+<script>
+// Fix modal issue on mobile
+document.addEventListener('DOMContentLoaded', function() {
+    const enrollButton = document.getElementById('enrollButton');
+    const enrollmentModal = document.getElementById('enrollmentModal');
+    let modalInstance = null;
+
+    function cleanupModal() {
+        // Cleanup old modal
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+
+        // Reset modal state
+        enrollmentModal.style.display = 'none';
+        enrollmentModal.classList.remove('show');
+        enrollmentModal.setAttribute('aria-hidden', 'true');
+        enrollmentModal.removeAttribute('aria-modal');
+
+        // Dispose old instance
+        if (modalInstance) {
+            modalInstance.dispose();
+            modalInstance = null;
+        }
+    }
+
+    // Handle enrollment button click
+    enrollButton.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Cleanup first
+        cleanupModal();
+
+        // Create new modal instance
+        modalInstance = new bootstrap.Modal(enrollmentModal);
+
+        // Show after a brief delay to ensure cleanup is complete
+        setTimeout(() => {
+            modalInstance.show();
+        }, 0);
+    });
+
+    // Handle modal hidden event
+    enrollmentModal.addEventListener('hidden.bs.modal', function() {
+        cleanupModal();
+    });
+});
+</script>
 </style>
 
 <!-- Container cho particles -->
@@ -3341,216 +3534,77 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         retina_detect: true
     });
-});
-</script>
 
-    <!-- breadcrumb start-->
-    <section class="course_details_area section_padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="course-header">
-                        <h1 class="course-title">{{ $course->title }}</h1>
-                        <div class="course-meta">
-                            <span class="duration"><i class="fas fa-clock"></i> {{ $course->duration }}</span>
-                            <span class="schedule"><i class="fas fa-calendar-alt"></i> {{ $course->schedule }}</span>
-                            @if($course->categories->isNotEmpty())
-                                <span class="category"><i class="fas fa-tag"></i> {{ $course->categories->first()->name }}</span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10 course_details_left">
-                    <div class="main_image">
-                        @if($course->thumbnail)
-                            <img class="img-fluid course-thumbnail" src="{{ env('APP_URL') . '/storage/app/public/' . $course->thumbnail }}" alt="{{ $course->title }}">
-                        @else
-                            <img class="img-fluid course-thumbnail" src="{{ asset('assets/img/single_cource.png') }}" alt="{{ $course->title }}">
-                        @endif
-                    </div>
-                    <div class="content_wrapper">
-                        <div class="content">
-                            {!! $course->description !!}
-                        </div>
-
-                        <div class="content">
-                            {!! $course->objectives !!}
-                        </div>
-
-                        <h4 class="title mt-5">Danh sách bài giảng</h4>
-                        <div class="content">
-                            <div class="lessons-list mt-4">
-                                @foreach($course->lessons->where('is_visible', true)->sortBy('sort_order') as $index => $lesson)
-                                <div class="lesson-item">
-                                    <div class="lesson-number">{{ $index + 1 }}</div>
-                                    <div class="lesson-content">
-                                        <h5>{{ $lesson->title }}</h5>
-                                        <p>{{ $lesson->description }}</p>
-                                        <div class="lesson-objectives">
-                                            <strong>Mục tiêu bài học:</strong>
-                                            <p>{{ $lesson->objectives }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @if ($course->allow_registration == 1)
-    <!-- Bottom enrollment section with end date display -->
-    <div class="bottom-enrollment-section">
-        <div class="container">
-            <div class="enrollment-card">
-                <div class="enrollment-card-inner">
-                    <div class="enrollment-card-content">
-                        <div class="row align-items-center">
-                            <div class="col-md-4">
-                                <div class="price-info">
-                                    <span class="label animate-text">HỌC PHÍ</span>
-                                    <div class="price-wrapper">
-                                        <h3 class="price shine-text">{{ number_format($course->sale_price, 0, ',', '.') }} VND</h3>
-                                        @if($course->regular_price && $course->regular_price != $course->sale_price)
-                                            <span class="original-price">{{ number_format($course->regular_price, 0, ',', '.') }} VND</span>
-                                        @endif
-                                    </div>
-                                    <div class="end-date-info">Đến hết ngày <span class="end-date">--/--/----</span></div>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="countdown-info">
-                                    <span class="label animate-text">KẾT THÚC SAU</span>
-                                    <div class="countdown countdown-highlight">
-                                        <div class="countdown-item">
-                                            <span id="days-bottom">00</span>
-                                            <span class="label">NGÀY</span>
-                                        </div>
-                                        <div class="countdown-item">
-                                            <span id="hours-bottom">00</span>
-                                            <span class="label">GIỜ</span>
-                                        </div>
-                                        <div class="countdown-item">
-                                            <span id="minutes-bottom">00</span>
-                                            <span class="label">PHÚT</span>
-                                        </div>
-                                        <div class="countdown-item">
-                                            <span id="seconds-bottom">00</span>
-                                            <span class="label">GIÂY</span>
-                                        </div>
-                                    </div>
-                                    <div class="end-date-info text-center mt-2">
-                                        Đến ngày <span class="end-date">--/--/----</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <button class="enroll-btn animated-btn" onclick="javascript:void(0);" id="enrollButton">
-                                    <span>Đăng Ký Ngay</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    @endif
-
-    <!-- Modal thanh toán -->
-    <div class="modal fade" id="enrollmentModal" tabindex="-1" aria-labelledby="enrollmentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header custom-modal-header">
-                    <h5 class="modal-title text-white" id="enrollmentModalLabel">Đăng ký khóa học</h5>
-                    <button type="button" class="custom-close-btn" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form đăng ký -->
-                    <div id="registrationForm">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Họ và tên</label>
-                            <input type="text" class="form-control" id="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Số điện thoại</label>
-                            <input type="tel" class="form-control" id="phone" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="referral_code" class="form-label">Mã giới thiệu <small class="text-muted">(nếu có)</small></label>
-                            <input type="text" class="form-control" id="referral_code" placeholder="Nhập mã giới thiệu nếu có">
-                        </div>
-                        <div class="text-center">
-                            <button type="button" class="btn btn-primary" onclick="showPaymentQR()">Tiếp tục thanh toán</button>
-                        </div>
-                    </div>
-
-                    <!-- Thông tin thanh toán -->
-                    <div id="paymentInfo" style="display: none;">
-                        <div class="text-center mb-4">
-                            <div class="price mb-4">
-                                @if($course->original_price && $course->original_price != $course->getCurrentPrice())
-                                    <span class="original-price"><del>{{ number_format($course->original_price, 0, ',', '.') }} VNĐ</del></span>
-                                @endif
-                                <span class="amount">{{ number_format($course->getCurrentPrice(), 0, ',', '.') }} VNĐ</span>
-                            </div>
-
-                            <div class="qr-container mb-4">
-                                <img id="qrCode" class="qr-code" src="" alt="QR Code">
-                            </div>
-
-                            <div class="bank-info bg-light p-4 rounded mb-4">
-                                <h6 class="fw-bold mb-3">Thông tin chuyển khoản</h6>
-                                <ul class="list-unstyled text-start">
-                                    <li class="mb-2"><strong>Ngân hàng:</strong> TPBANK</li>
-                                    <li class="mb-2"><strong>Số tài khoản:</strong> 05261994118</li>
-                                    <li class="mb-2"><strong>Chủ tài khoản:</strong> PHAM QUANG DAT</li>
-                                    <li class="mb-2"><strong>Số tiền:</strong> <span class="fw-bold text-primary">{{ number_format($course->getCurrentPrice(), 0, ',', '.') }} VNĐ</span></li>
-                                    <li class="mb-2"><strong>Nội dung CK:</strong> <span id="transferContent" class="fw-bold text-primary"></span></li>
-                                </ul>
-                            </div>
-
-                            <div class="alert alert-info">
-                                <i class="fas fa-info-circle"></i> Sau khi chuyển khoản, vui lòng nhấn nút xác nhận thanh toán bên dưới.
-                            </div>
-
-                            <div class="d-flex justify-content-center gap-3 mt-4">
-                                <button type="button" class="btn btn-secondary" onclick="showRegistrationForm()">Quay lại</button>
-                                <button type="button" class="btn btn-primary" id="confirmPayment" onclick="confirmPayment()">Xác nhận thanh toán</button>
-                            </div>
-
-                            <!-- Thông báo thành công -->
-                            <div id="successMessage" class="alert alert-success mt-4" style="display: none;">
-                                <i class="fas fa-check-circle"></i> Đăng ký khóa học thành công! Vui lòng kiểm tra email của bạn.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
     // Set up CSRF token cho AJAX
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+
+    // Xử lý sự kiện khi modal được ẩn
+    const enrollmentModal = document.getElementById('enrollmentModal');
+
+    // Xử lý đóng modal bằng nút X hoặc click outside
+    enrollmentModal.addEventListener('hidden.bs.modal', function () {
+        // Reset form
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('referral_code').value = '';
+
+        // Reset form display
+        document.getElementById('registrationForm').style.display = 'block';
+        document.getElementById('paymentInfo').style.display = 'none';
+
+        // Reset payment confirmation button
+        const confirmBtn = document.getElementById('confirmPayment');
+        if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.innerHTML = 'Xác nhận thanh toán';
+            confirmBtn.style.display = 'block';
+        }
+
+        // Hide success message
+        const successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+
+        // Xóa modal backdrop và class modal-open
+        document.body.classList.remove('modal-open');
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+
+        // Reset lại style của body
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+    });
+
+    // Xử lý nút close trong modal
+    const closeBtn = enrollmentModal.querySelector('.custom-close-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            const modalInstance = bootstrap.Modal.getInstance(enrollmentModal);
+            if (modalInstance) {
+                modalInstance.hide();
+            }
+        });
+    }
+
+    // Xử lý sự kiện khi modal được hiển thị
+    enrollmentModal.addEventListener('show.bs.modal', function () {
+        // Đảm bảo form đăng ký được hiển thị
+        document.getElementById('registrationForm').style.display = 'block';
+        document.getElementById('paymentInfo').style.display = 'none';
+    });
+
+    // Xử lý nút đăng ký
+    document.getElementById('enrollButton').addEventListener('click', function() {
+        var modal = new bootstrap.Modal(enrollmentModal);
+        modal.show();
     });
 
     // Mobile Detection
@@ -3659,9 +3713,6 @@ function startCountdown() {
     endDate.setDate(endDate.getDate() + 2); // Ngày T+2
     endDate.setHours(23, 59, 59, 999); // Đặt thời gian 23:59:59
 
-    // Display the formatted end date where needed
-    displayEndDate(endDate);
-
     function updateCountdown() {
         const now = new Date();
         const distance = endDate - now;
@@ -3679,37 +3730,37 @@ function startCountdown() {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Force direct update of all countdown elements without animation
-        updateElementContent('days-bottom', days);
-        updateElementContent('hours-bottom', hours);
-        updateElementContent('minutes-bottom', minutes);
-        updateElementContent('seconds-bottom', seconds);
+        // Format với số 0 đứng trước
+        const formattedDays = String(days).padStart(2, '0');
+        const formattedHours = String(hours).padStart(2, '0');
+        const formattedMinutes = String(minutes).padStart(2, '0');
+        const formattedSeconds = String(seconds).padStart(2, '0');
 
-        updateElementContent('days-popup', days);
-        updateElementContent('hours-popup', hours);
-        updateElementContent('minutes-popup', minutes);
-        updateElementContent('seconds-popup', seconds);
+        // Cập nhật countdown
+        updateElementContent('days-bottom', formattedDays);
+        updateElementContent('hours-bottom', formattedHours);
+        updateElementContent('minutes-bottom', formattedMinutes);
+        updateElementContent('seconds-bottom', formattedSeconds);
+
+        // Cập nhật ngày kết thúc
+        const formattedDate = formatDate(endDate);
+        document.querySelectorAll('.end-date').forEach(element => {
+            element.textContent = formattedDate;
+        });
     }
 
     function updateElementContent(id, value) {
         const element = document.getElementById(id);
         if (element) {
-            element.textContent = String(value).padStart(2, '0');
+            element.textContent = value;
         }
     }
 
-    function displayEndDate(endDate) {
-        // Format the end date: DD/MM/YYYY
-        const day = String(endDate.getDate()).padStart(2, '0');
-        const month = String(endDate.getMonth() + 1).padStart(2, '0');
-        const year = endDate.getFullYear();
-        const formattedDate = `${day}/${month}/${year}`;
-
-        // Update all end date display elements
-        const endDateElements = document.querySelectorAll('.end-date');
-        endDateElements.forEach(element => {
-            element.textContent = formattedDate;
-        });
+    function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
     }
 
     // Initial update
@@ -3717,7 +3768,18 @@ function startCountdown() {
 
     // Update every second
     const countdownTimer = setInterval(updateCountdown, 1000);
+
+    // Cleanup function
+    return () => {
+        clearInterval(countdownTimer);
+    };
 }
+
+// Khởi tạo countdown khi trang được load
+document.addEventListener('DOMContentLoaded', function() {
+    const cleanup = startCountdown();
+    window.addEventListener('unload', cleanup);
+});
 
 // Optimize page for mobile
 function optimizeForMobile() {
@@ -3863,8 +3925,33 @@ function initAnimations() {
 }
 
 function showRegistrationForm() {
-    document.getElementById('registrationForm').style.display = 'block';
-    document.getElementById('paymentInfo').style.display = 'none';
+    const registrationForm = document.getElementById('registrationForm');
+    const paymentInfo = document.getElementById('paymentInfo');
+
+    if (registrationForm && paymentInfo) {
+        registrationForm.style.display = 'block';
+        paymentInfo.style.display = 'none';
+
+        // Reset form fields
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('referral_code').value = '';
+
+        // Reset payment confirmation button
+        const confirmBtn = document.getElementById('confirmPayment');
+        if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.innerHTML = 'Xác nhận thanh toán';
+            confirmBtn.style.display = 'block';
+        }
+
+        // Hide success message
+        const successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+    }
 }
 
 function showPaymentQR() {
@@ -3963,7 +4050,7 @@ function confirmPayment() {
     };
 
     // Gửi request đến webhook
-    fetch('https://mvp.xcel.bot/webhook-test/222e9e1e-a782-4b96-a077-15e7b1efaf49', {
+    fetch('https://mvp.xcel.bot/webhook/222e9e1e-a782-4b96-a077-15e7b1efaf49', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -4106,13 +4193,346 @@ window.addEventListener('unload', function() {
     }
 });
 
-document.getElementById('enrollButton').addEventListener('click', function() {
-    var modalElement = document.getElementById('enrollmentModal');
-    if (modalElement) {
-        var modal = new bootstrap.Modal(modalElement);
-        modal.show();
+// Add this right before the closing </body> tag
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const enrollmentModal = document.getElementById('enrollmentModal');
+    const enrollButton = document.getElementById('enrollButton');
+    let modalInstance = null;
+
+    function cleanupModal() {
+        document.body.classList.remove('modal-open');
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        enrollmentModal.classList.remove('show');
+        enrollmentModal.style.display = 'none';
+        enrollmentModal.setAttribute('aria-hidden', 'true');
     }
+
+    function resetForm() {
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('referral_code').value = '';
+        document.getElementById('registrationForm').style.display = 'block';
+        document.getElementById('paymentInfo').style.display = 'none';
+
+        const confirmBtn = document.getElementById('confirmPayment');
+        if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.innerHTML = 'Xác nhận thanh toán';
+            confirmBtn.style.display = 'block';
+        }
+
+        const successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+    }
+
+    function showModal() {
+        cleanupModal();
+        resetForm();
+
+        setTimeout(() => {
+            modalInstance = new bootstrap.Modal(enrollmentModal);
+            modalInstance.show();
+        }, 100);
+    }
+
+    enrollButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        showModal();
+    });
+
+    enrollmentModal.addEventListener('hidden.bs.modal', function() {
+        cleanupModal();
+        resetForm();
+        modalInstance = null;
+    });
+
+    const closeBtn = enrollmentModal.querySelector('.custom-close-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (modalInstance) {
+                modalInstance.hide();
+            }
+        });
+    }
+
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal-backdrop')) {
+            if (modalInstance) {
+                modalInstance.hide();
+            }
+        }
+    });
 });
 </script>
+</script>
+
+    <!-- breadcrumb start-->
+    <section class="course_details_area section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="course-header">
+                        <h1 class="course-title">{{ $course->title }}</h1>
+                        <div class="course-meta">
+                            <span class="duration"><i class="fas fa-clock"></i> {{ $course->duration }}</span>
+                            <span class="schedule"><i class="fas fa-calendar-alt"></i> {{ $course->schedule }}</span>
+                            @if($course->categories->isNotEmpty())
+                                <span class="category"><i class="fas fa-tag"></i> {{ $course->categories->first()->name }}</span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 course_details_left">
+                    <div class="main_image">
+                        @if($course->thumbnail)
+                            <img class="img-fluid course-thumbnail" src="{{ env('APP_URL') . '/storage/app/public/' . $course->thumbnail }}" alt="{{ $course->title }}">
+                        @else
+                            <img class="img-fluid course-thumbnail" src="{{ asset('assets/img/single_cource.png') }}" alt="{{ $course->title }}">
+                        @endif
+                    </div>
+                    <div class="content_wrapper">
+                        <div class="content">
+                            {!! $course->description !!}
+                        </div>
+
+                        <div class="content">
+                            {!! $course->objectives !!}
+                        </div>
+
+                        <h4 class="title mt-5">Danh sách bài giảng</h4>
+                        <div class="content">
+                            <div class="lessons-list mt-4">
+                                @foreach($course->lessons->where('is_visible', true)->sortBy('sort_order') as $index => $lesson)
+                                <div class="lesson-item">
+                                    <div class="lesson-number">{{ $index + 1 }}</div>
+                                    <div class="lesson-content">
+                                        <h5>{{ $lesson->title }}</h5>
+
+                                        <div class="lesson-objectives">
+                                            <strong>Mục tiêu bài học:</strong>
+                                            <p>{{ $lesson->objectives }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @if ($course->allow_registration == 1)
+    <!-- Bottom enrollment section with end date display -->
+    <div class="bottom-enrollment-section">
+        <div class="container">
+            <div class="enrollment-card">
+                <div class="enrollment-card-inner">
+                    <div class="enrollment-card-content">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="price-info">
+                                    <span class="label animate-text">HỌC PHÍ</span>
+                                    <div class="price-wrapper">
+                                        <h3 class="price shine-text">{{ number_format($course->sale_price, 0, ',', '.') }} VND</h3>
+                                        @if($course->regular_price && $course->regular_price != $course->sale_price)
+                                            <span class="original-price">{{ number_format($course->regular_price, 0, ',', '.') }} VND</span>
+                                        @endif
+                                    </div>
+                                    <div class="end-date-info">Đến hết ngày <span class="end-date">--/--/----</span></div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="countdown-info">
+                                    <span class="label animate-text">KẾT THÚC SAU</span>
+                                    <div class="countdown countdown-highlight">
+                                        <div class="countdown-item">
+                                            <span id="days-bottom">00</span>
+                                            <span class="label">NGÀY</span>
+                                        </div>
+                                        <div class="countdown-item">
+                                            <span id="hours-bottom">00</span>
+                                            <span class="label">GIỜ</span>
+                                        </div>
+                                        <div class="countdown-item">
+                                            <span id="minutes-bottom">00</span>
+                                            <span class="label">PHÚT</span>
+                                        </div>
+                                        <div class="countdown-item">
+                                            <span id="seconds-bottom">00</span>
+                                            <span class="label">GIÂY</span>
+                                        </div>
+                                    </div>
+                                    <div class="end-date-info text-center mt-2">
+                                        Đến ngày <span class="end-date">--/--/----</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="enroll-btn animated-btn" onclick="javascript:void(0);" id="enrollButton">
+                                    <span>Đăng Ký Ngay</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @endif
+
+    <!-- Modal thanh toán -->
+    <div id="modalContainer"></div>
+
+    <template id="modalTemplate">
+        <div class="modal fade" id="enrollmentModal" tabindex="-1" aria-labelledby="enrollmentModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header custom-modal-header">
+                        <h5 class="modal-title text-white" id="enrollmentModalLabel">Đăng ký khóa học</h5>
+                        <button type="button" class="custom-close-btn" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form đăng ký -->
+                        <div id="registrationForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Họ và tên</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Số điện thoại</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="referral_code" class="form-label">Mã giới thiệu <small class="text-muted">(nếu có)</small></label>
+                                <input type="text" class="form-control" id="referral_code" placeholder="Nhập mã giới thiệu nếu có">
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary" onclick="showPaymentQR()">Tiếp tục thanh toán</button>
+                            </div>
+                        </div>
+
+                        <!-- Thông tin thanh toán -->
+                        <div id="paymentInfo" style="display: none;">
+                            <div class="text-center mb-4">
+                                <div class="price mb-4">
+                                    @if($course->original_price && $course->original_price != $course->getCurrentPrice())
+                                        <span class="original-price"><del>{{ number_format($course->original_price, 0, ',', '.') }} VNĐ</del></span>
+                                    @endif
+                                    <span class="amount">{{ number_format($course->getCurrentPrice(), 0, ',', '.') }} VNĐ</span>
+                                </div>
+
+                                <div class="qr-container mb-4">
+                                    <img id="qrCode" class="qr-code" src="" alt="QR Code">
+                                </div>
+
+                                <div class="bank-info bg-light p-4 rounded mb-4">
+                                    <h6 class="fw-bold mb-3">Thông tin chuyển khoản</h6>
+                                    <ul class="list-unstyled text-start">
+                                        <li class="mb-2"><strong>Ngân hàng:</strong> TPBANK</li>
+                                        <li class="mb-2"><strong>Số tài khoản:</strong> 05261994118</li>
+                                        <li class="mb-2"><strong>Chủ tài khoản:</strong> PHAM QUANG DAT</li>
+                                        <li class="mb-2"><strong>Số tiền:</strong> <span class="fw-bold text-primary">{{ number_format($course->getCurrentPrice(), 0, ',', '.') }} VNĐ</span></li>
+                                        <li class="mb-2"><strong>Nội dung CK:</strong> <span id="transferContent" class="fw-bold text-primary"></span></li>
+                                    </ul>
+                                </div>
+
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle"></i> Sau khi chuyển khoản, vui lòng nhấn nút xác nhận thanh toán bên dưới.
+                                </div>
+
+                                <div class="d-flex justify-content-center gap-3 mt-4">
+                                    <button type="button" class="btn btn-secondary" onclick="showRegistrationForm()">Quay lại</button>
+                                    <button type="button" class="btn btn-primary" id="confirmPayment" onclick="confirmPayment()">Xác nhận thanh toán</button>
+                                </div>
+
+                                <div id="successMessage" class="alert alert-success mt-4" style="display: none;">
+                                    <i class="fas fa-check-circle"></i> Đăng ký khóa học thành công! Vui lòng kiểm tra email của bạn.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const enrollButton = document.getElementById('enrollButton');
+        const modalTemplate = document.getElementById('modalTemplate');
+        const modalContainer = document.getElementById('modalContainer');
+
+        function createNewModal() {
+            // Xóa modal cũ nếu có
+            modalContainer.innerHTML = '';
+
+            // Xóa backdrop cũ
+            const oldBackdrop = document.querySelector('.modal-backdrop');
+            if (oldBackdrop) {
+                oldBackdrop.remove();
+            }
+
+            // Reset body
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+
+            // Tạo modal mới từ template
+            const modalContent = modalTemplate.content.cloneNode(true);
+            modalContainer.appendChild(modalContent);
+
+            // Lấy reference đến modal mới
+            const newModal = modalContainer.querySelector('.modal');
+
+            // Khởi tạo modal Bootstrap
+            const bsModal = new bootstrap.Modal(newModal);
+
+            // Show modal
+            bsModal.show();
+
+            // Xử lý sự kiện đóng modal
+            newModal.addEventListener('hidden.bs.modal', function() {
+                // Dọn dẹp sau khi đóng
+                setTimeout(() => {
+                    modalContainer.innerHTML = '';
+                    document.body.classList.remove('modal-open');
+                    const backdrop = document.querySelector('.modal-backdrop');
+                    if (backdrop) {
+                        backdrop.remove();
+                    }
+                    document.body.style.overflow = '';
+                    document.body.style.paddingRight = '';
+                }, 150);
+            });
+        }
+
+        // Xử lý click button đăng ký
+        enrollButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            createNewModal();
+        });
+    });
+    </script>
 
 @endsection
